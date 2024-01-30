@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/java%20cua%20t/PetCenter/src/java/DAO/AccountsDAO.java</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/src/java/filter/LoggedIn.java</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/src/java/controller/profile.java</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/src/java/DAO/PetDAO.java</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/src/java/controller/signin.java</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/src/java/controller/signup.java</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/src/java/filter/NotLoggedIn.java</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/src/java/controller/addpet.java</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/signin.jsp</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/profile.jsp</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/src/java/controller/togglepet.java</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/src/java/validator/Validator.java</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/addpet.jsp</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/src/java/model/Pet.java</file>
+        </group>
+    </open-files>
+</project-private>
