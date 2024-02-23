@@ -68,6 +68,10 @@
         <servlet-name>managecustomer</servlet-name>
         <servlet-class>controller.managecustomer</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>toggleuser</servlet-name>
+        <servlet-class>controller.toggleuser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>managecustomer</servlet-name>
         <url-pattern>/managecustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>toggleuser</servlet-name>
+        <url-pattern>/toggleuser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -6,7 +6,6 @@
 package controller;
 
 import DAO.AccountsDAO;
-import DAO.PetDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -16,13 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Accounts;
-import model.Pet;
 
 /**
  *
  * @author Windows 10
  */
-public class signin extends HttpServlet {
+public class toggleuser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,8 +36,16 @@ public class signin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
-            
+//            HttpSession session = request.getSession();
+            String email = request.getParameter("email");
+            String currentStatus = request.getParameter("status");
+            AccountsDAO accountsDAO = new AccountsDAO();
+            if(currentStatus.equals("active")) accountsDAO.toggleUser("blocked", email);
+            if(currentStatus.equals("blocked")) accountsDAO.toggleUser("active", email);
+            HttpSession session = request.getSession();
+            ArrayList<Accounts> allAccounts = accountsDAO.getAllAccounts();
+            session.setAttribute("list_accounts", allAccounts);
+            request.getRequestDispatcher("/WEB-INF/view/managecustomer.jsp").forward(request, response);
         }
     }
 
@@ -55,8 +61,7 @@ public class signin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        request.getRequestDispatcher("/WEB-INF/view/signin.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -70,32 +75,7 @@ public class signin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        String email = request.getParameter("email").toLowerCase();
-        String password = request.getParameter("password");
-        Accounts checkAccount = new Accounts(email, password);
-        AccountsDAO accountsDAO = new AccountsDAO();
-        Accounts thisAccount = accountsDAO.SigninCheck(checkAccount);
-        if(thisAccount == null){
-            String msg = "Incorrect email or password";
-            request.setAttribute("errorloginmsg", msg);
-            request.getRequestDispatcher("/WEB-INF/view/signin.jsp").forward(request, response);
-        }else if(thisAccount.getAccountStatus().equals("blocked")){
-            String msg = "Your account has been blocked";
-            request.setAttribute("errorloginmsg", msg);
-            request.getRequestDispatcher("/WEB-INF/view/signin.jsp").forward(request, response);
-        }else{
-            HttpSession session = request.getSession();
-            session.setAttribute("loggedInAccount", thisAccount);
-            PetDAO petDAO = new PetDAO();
-            ArrayList<Pet> userPet = petDAO.getAllPet(email);
-            session.setAttribute("userPet", userPet);
-//            if(thisAccount.getRole() == "admin"){
-//                ArrayList<Accounts> allAccounts = accountsDAO.getAllAccounts();
-//                session.setAttribute("list_accounts", allAccounts);
-//            }
-            response.sendRedirect("Home");
-        }
+        processRequest(request, response);
     }
 
     /**

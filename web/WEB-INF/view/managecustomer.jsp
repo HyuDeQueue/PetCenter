@@ -45,6 +45,9 @@
             #user_list_table{
                 width: 100%;
             }
+            #AccountStatus form button{
+                width: 100%;
+            }
         </style>
     </head>
     <body>
@@ -55,23 +58,23 @@
             </div>
             <div id="search_bar">
                 
-                <form id="namesearch" action="namesearch" method="post" >
+                <form id="namesearch">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Nguyen Van A">
+                        <input type="text" id="nameInput" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Nguyen Van A">
                     </div>
                 </form>
                 
-                <form id="emailsearch" action="emailsearch" method="post" >
+                <form id="emailsearch">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="abc@example.com">
+                            <input type="text" id="emailInput" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="abc@example.com">
                         </div>
                 </form>
                 
             </div>
             
             
-            <div id="user_list_table">
-                <table class="table">
+            <div id="user_list_table" style="max-height: 400px; overflow-y: auto;">
+                <table id="userTable" class="table table-bordered table-hover table-sm">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -92,8 +95,8 @@
                     %>
                     
                     <c:if test="${list_accounts != null}">
-                        <tbody>
-                        <c:forEach var="accounts" items="${list_accounts}">
+                        <tbody id="userTableBody">
+                            <c:forEach var="accounts" items="${list_accounts}" varStatus="loop">
                             <tr>
                                 <td>${loop.index + 1}</td>
                                 <td>${accounts.firstName} ${accounts.lastName}</td>
@@ -101,8 +104,11 @@
                                 <td>${accounts.getPhone()}</td>
                                 <td>${accounts.email}</td>
                                 <td>${accounts.role}</td>
-                                <td>${accounts.accountStatus}</td>
-                                <td><button type="button" class="btn btn-outline-primary">View></button></td>
+                                <td id="AccountStatus">
+                                    <c:if test="${accounts.accountStatus == 'active'}"><form action="toggleuser" method="post"><input type="hidden" value="${accounts.email}" name="email"><input type="hidden" value="${accounts.accountStatus}" name="status"><button value="active" type="submit" class="btn btn-success">Active</button></form></c:if>
+                                    <c:if test="${accounts.accountStatus == 'blocked'}"><form action="toggleuser" method="post"><input type="hidden" value="${accounts.email}" name="email"><input type="hidden" value="${accounts.accountStatus}" name="status"><button value="blocked" type="submit" class="btn btn-danger">Blocked</button></form></c:if>
+                                </td>
+                                <td><button type="button" class="btn btn-outline-primary">▼</button></td>
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -114,5 +120,6 @@
                 <%@include file="footer.jsp" %>
             </div>
         </div>
+    
     </body>
 </html>

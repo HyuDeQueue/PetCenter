@@ -88,6 +88,8 @@ public class AccountsDAO extends DBContext{
                 account.setAccountStatus(rs.getString("Account_status"));
                 AccountList.add(account);
             }
+            rs.close();
+            ps.close();
             return AccountList;
         } catch (SQLException ex) {
             Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -116,6 +118,8 @@ public class AccountsDAO extends DBContext{
                 account.setAccountStatus(rs.getString("Account_status"));
                 accountList.add(account);
             }
+            rs.close();
+            ps.close();
             return accountList;
         } catch (SQLException ex) {
             Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -139,7 +143,10 @@ public class AccountsDAO extends DBContext{
                 account.setPhone(rs.getString("Phone"));
                 account.setRole(rs.getString("Role"));
                 account.setAccountStatus(rs.getString("Account_status"));
+                rs.close();
+                ps.close();
                 return account;
+                
             } else {
                 // If no matching record found, return null
                 return null;
@@ -147,6 +154,20 @@ public class AccountsDAO extends DBContext{
         } catch (SQLException ex) {
             Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        }
+    }
+    public void toggleUser(String status, String email){
+        try {
+            String sql="UPDATE [dbo].[Account]\n"
+                    + "SET [Account_status] = ?\n"
+                    + "WHERE [Email] = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, status);
+            ps.setString(2, email);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
