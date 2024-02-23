@@ -137,10 +137,10 @@
                             </c:choose></p>
                         <p>Số điện thoại: ${loggedInAccount.getPhone()}</p>
                         <p>Vai trò: ${loggedInAccount.role}</p>
-                        <form>
+<!--                        <form>
                             <input type="hidden" value="${loggedInAccount.email}" name="email">
                             <input type="submit" value="Cập nhật thông tin" class="btn btn-primary" />
-                        </form>
+                        </form>-->
                     </div>
                     
                     <div id="profile-pet">
@@ -153,7 +153,6 @@
                                 <th>Cân nặng</th>
                                 <th>Chiều cao</th>
                                 <th>Chiều dài</th>
-                                <!--<th>Chiều rộng</th>-->
                                 <th>Tính cách</th>
                                 <th>Món ưa thích</th>
                                 <th>Trạng thái</th>
@@ -161,8 +160,8 @@
                                 <th>Xóa thú cưng</th>
                             </tr>
                             
-                            <c:if test="${list_pet != null}">
-                                <c:forEach var="pet" items="${list_pet}">
+                            <c:if test="${userPet != null}">
+                                <c:forEach var="pet" items="${userPet}">
                                     <c:if test="${pet.petStatus != 'hidden'}">
                                         <tr>
                                             <td>${pet.petName}</td>

@@ -5,26 +5,18 @@
  */
 package controller;
 
-import DAO.PetDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Accounts;
-import model.Booking;
-import model.BookingDetail;
-import model.Pet;
 
 /**
  *
  * @author Windows 10
  */
-public class servicebooking extends HttpServlet {
+public class managecustomer extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +35,10 @@ public class servicebooking extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet servicebooking</title>");            
+            out.println("<title>Servlet managecustomer</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet servicebooking at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet managecustomer at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,8 +56,7 @@ public class servicebooking extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        request.getRequestDispatcher("/WEB-INF/view/servicebooking.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/view/managecustomer.jsp").forward(request, response);
     }
 
     /**
@@ -79,29 +70,7 @@ public class servicebooking extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        String[] petIds = request.getParameterValues("pickpetchose");
-        int[] petIdsInt = new int[petIds.length];
-        for (int i = 0; i < petIds.length; i++) {
-            petIdsInt[i] = Integer.parseInt(petIds[i]);
-        }
-        HttpSession session = request.getSession();
-        Accounts thisAccount = (Accounts) session.getAttribute("loggedInAccount");
-        String ownerEmail = thisAccount.getEmail();
-        PetDAO petDAO = new PetDAO();
-        ArrayList<Pet> allPet = petDAO.getAllPet(ownerEmail);
-        ArrayList<Pet> selectedPet = null;
-        for (int id : petIdsInt) {
-            for (Pet pet : allPet) {
-                if (pet.getPetId() == id) {
-                    selectedPet.add(pet);
-                    break; // Break out of inner loop once a match is found
-                }
-            }
-        }
-        request.setAttribute("pickedPet", selectedPet);
-        
-     
+        processRequest(request, response);
     }
 
     /**

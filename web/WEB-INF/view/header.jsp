@@ -72,8 +72,6 @@
                     <c:if test="${loggedInAccount != null}">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle btn btn btn-outline-info" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Hello
-                                <%-- Use JSTL to get the user's first and last name from the session attribute --%>
                                 ${loggedInAccount.firstName} ${loggedInAccount.lastName}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -81,7 +79,14 @@
                                 <a class="dropdown-item" href="addpet">Thêm thú cưng</a>
                                 <a class="dropdown-item" href="#">Thông tin Booking</a>
                                 <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="logout">Logout</a>
+                                <c:if test="${loggedInAccount.role == 'admin'}">
+                                    <a class="dropdown-item" href="managecustomer">Quản lý người dùng</a>
+                                    <a class="dropdown-item" href="#">Quản lý đơn hàng</a>
+                                    <a class="dropdown-item" href="#">Quản lý dịch vụ</a>
+                                    <a class="dropdown-item" href="#">Quản lý phản hồi</a>
+                                    <div class="dropdown-divider"></div>
+                                </c:if>
+                                <a class="dropdown-item" href="logout">Logout</a>
                             </div>
                         </li>
                     </c:if>

@@ -5,76 +5,48 @@
  */
 package model;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
  * @author Windows 10
  */
 public class Booking {
-    private int BookId;
-    private String PetId;
-    private Date BookingDate;
-    private Date CheckinDate;
-    private Date CheckoutDate;
-    private int total;
+    private int BookingId;
     private String status;
+    private Date BookingDate;
+    private String Email;
 
     public Booking() {
     }
 
-    public Booking(int BookId, String PetId, Date BookingDate, Date CheckinDate, Date CheckoutDate, int total, String status) {
-        this.BookId = BookId;
-        this.PetId = PetId;
-        this.BookingDate = BookingDate;
-        this.CheckinDate = CheckinDate;
-        this.CheckoutDate = CheckoutDate;
-        this.total = total;
+    public Booking(int BookingId, String status, Date BookingDate, String Email) {
+        this.BookingId = BookingId;
         this.status = status;
+        this.BookingDate = BookingDate;
+        this.Email = Email;
     }
 
-    public Booking(String PetId, Date BookingDate, Date CheckinDate, Date CheckoutDate, int total, String status) {
-        this.PetId = PetId;
-        this.BookingDate = BookingDate;
-        this.CheckinDate = CheckinDate;
-        this.CheckoutDate = CheckoutDate;
-        this.total = total;
+    public Booking(String status, Date BookingDate, String Email) {
         this.status = status;
-    }
-
-    public Booking(int BookId, String PetId, Date BookingDate, Date CheckinDate, Date CheckoutDate, int total) {
-        this.BookId = BookId;
-        this.PetId = PetId;
         this.BookingDate = BookingDate;
-        this.CheckinDate = CheckinDate;
-        this.CheckoutDate = CheckoutDate;
-        this.total = total;
+        this.Email = Email;
     }
 
-    public Booking(String PetId, Date BookingDate, Date CheckinDate, Date CheckoutDate, int total) {
-        this.PetId = PetId;
-        this.BookingDate = BookingDate;
-        this.CheckinDate = CheckinDate;
-        this.CheckoutDate = CheckoutDate;
-        this.total = total;
+    public int getBookingId() {
+        return BookingId;
     }
 
-    public int getBookId() {
-        return BookId;
+    public void setBookingId(int BookingId) {
+        this.BookingId = BookingId;
     }
 
-    public void setBookId(int BookId) {
-        this.BookId = BookId;
+    public String getStatus() {
+        return status;
     }
 
-
-    public String getPetId() {
-        return PetId;
-    }
-
-    public void setPetId(String PetId) {
-        this.PetId = PetId;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Date getBookingDate() {
@@ -85,36 +57,14 @@ public class Booking {
         this.BookingDate = BookingDate;
     }
 
-    public Date getCheckinDate() {
-        return CheckinDate;
+    public String getEmail() {
+        return Email;
     }
 
-    public void setCheckinDate(Date CheckinDate) {
-        this.CheckinDate = CheckinDate;
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
-
-    public Date getCheckoutDate() {
-        return CheckoutDate;
-    }
-
-    public void setCheckoutDate(Date CheckoutDate) {
-        this.CheckoutDate = CheckoutDate;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    
+    
     
 }

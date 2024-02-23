@@ -8,10 +8,14 @@ package controller;
 import DAO.PetDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Accounts;
+import model.Pet;
 
 /**
  *
@@ -36,6 +40,12 @@ public class deletepet extends HttpServlet {
             int thisPetId = Integer.parseInt(request.getParameter("petId"));
             PetDAO petDAO = new PetDAO();
             petDAO.removePet(thisPetId);
+            
+            HttpSession session = request.getSession(); 
+            Accounts userAccount = (Accounts) session.getAttribute("loggedInAccount");
+            String userEmail = userAccount.getEmail();
+            ArrayList<Pet> userPet = petDAO.getAllPet(userEmail);
+            session.setAttribute("userPet", userPet);
             response.sendRedirect("profile");
         }
     }

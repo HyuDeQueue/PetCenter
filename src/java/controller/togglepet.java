@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Accounts;
 import model.Pet;
 
 /**
@@ -36,11 +37,17 @@ public class togglepet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
             int thisPetId = Integer.parseInt(request.getParameter("petId"));
             String thisPetStatus = request.getParameter("petStatus");
             PetDAO petDAO = new PetDAO();
             if(thisPetStatus.equals("active")) petDAO.togglePet(thisPetId,"disable");
             if(thisPetStatus.equals("disable")) petDAO.togglePet(thisPetId,"active");
+            
+            Accounts userAccount = (Accounts) session.getAttribute("loggedInAccount");
+            String userEmail = userAccount.getEmail();
+            ArrayList<Pet> userPet = petDAO.getAllPet(userEmail);
+            session.setAttribute("userPet", userPet);
             response.sendRedirect("profile");
         }
     }

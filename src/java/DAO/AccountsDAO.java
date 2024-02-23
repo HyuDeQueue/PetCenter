@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Accounts;
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import java.util.ArrayList;
 
 /**
  *
@@ -69,4 +70,84 @@ public class AccountsDAO extends DBContext{
             Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public ArrayList<Accounts> getAllAccounts(){
+        try {
+            String sql = "SELECT [Email],[First_Name],[Last_name],[User_sex],[Phone],[Role],[Account_status]\n"
+                    + "FROM [dbo].[Account]";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            ArrayList<Accounts> AccountList = null;
+            while(rs.next()){
+                Accounts account = new Accounts();
+                account.setEmail(rs.getString("Email")); 
+                account.setFirstName(rs.getString("First_Name")); 
+                account.setLastName(rs.getString("Last_name")); 
+                account.setSex(rs.getString("User_sex")); 
+                account.setPhone(rs.getString("Phone"));
+                account.setRole(rs.getString("Role"));
+                account.setAccountStatus(rs.getString("Account_status"));
+                AccountList.add(account);
+            }
+            return AccountList;
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public ArrayList<Accounts> searchByName(String searchString){
+        try {
+            String sql = "SELECT [Email],[First_Name],[Last_name],[User_sex],[Phone],[Role],[Account_status]\n"
+                    + "FROM [dbo].[Account] WHERE [First_Name] LIKE ? OR [Last_name] LIKE ? OR ([First_Name] + ' ' + [Last_name]) LIKE ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, "%" + searchString + "%"); // Match first name
+            ps.setString(2, "%" + searchString + "%"); // Match last name
+            ps.setString(3, "%" + searchString + "%"); // Match first name + last name
+            ResultSet rs = ps.executeQuery();
+            ArrayList<Accounts> accountList = new ArrayList<>();
+            while(rs.next()){
+                Accounts account = new Accounts();
+                account.setEmail(rs.getString("Email"));
+                account.setFirstName(rs.getString("First_Name"));
+                account.setLastName(rs.getString("Last_name"));
+                account.setSex(rs.getString("User_sex"));
+                account.setPhone(rs.getString("Phone"));
+                account.setRole(rs.getString("Role"));
+                account.setAccountStatus(rs.getString("Account_status"));
+                accountList.add(account);
+            }
+            return accountList;
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public Accounts searchByEmail(String email){
+        try {
+            String sql = "SELECT [Email],[First_Name],[Last_name],[User_sex],[Phone],[Role],[Account_status]\n"
+                    + "FROM [dbo].[Account] WHERE [Email] = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, email.toLowerCase()); // Convert search string to lowercase for case-insensitive search
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Accounts account = new Accounts();
+                account.setEmail(rs.getString("Email"));
+                account.setFirstName(rs.getString("First_Name"));
+                account.setLastName(rs.getString("Last_name"));
+                account.setSex(rs.getString("User_sex"));
+                account.setPhone(rs.getString("Phone"));
+                account.setRole(rs.getString("Role"));
+                account.setAccountStatus(rs.getString("Account_status"));
+                return account;
+            } else {
+                // If no matching record found, return null
+                return null;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
 }

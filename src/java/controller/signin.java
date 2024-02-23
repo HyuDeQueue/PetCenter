@@ -6,14 +6,17 @@
 package controller;
 
 import DAO.AccountsDAO;
+import DAO.PetDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Accounts;
+import model.Pet;
 
 /**
  *
@@ -84,6 +87,13 @@ public class signin extends HttpServlet {
         }else{
             HttpSession session = request.getSession();
             session.setAttribute("loggedInAccount", thisAccount);
+            PetDAO petDAO = new PetDAO();
+            ArrayList<Pet> userPet = petDAO.getAllPet(email);
+            session.setAttribute("userPet", userPet);
+            if(thisAccount.getRole() == "admin"){
+                ArrayList<Accounts> allAccounts = accountsDAO.getAllAccounts();
+                session.setAttribute("list_accounts", allAccounts);
+            }
             response.sendRedirect("Home");
         }
     }

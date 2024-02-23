@@ -64,11 +64,11 @@ public class profile extends HttpServlet {
 //        processRequest(request, response);
         HttpSession session = request.getSession();
         
-        Accounts owner = (Accounts) session.getAttribute("loggedInAccount");
-        String ownerEmail = owner.getEmail();
-        PetDAO petDAO = new PetDAO();
-        ArrayList<Pet> list_pet = petDAO.getAllPet(ownerEmail);
-        session.setAttribute("list_pet", list_pet);
+//        Accounts owner = (Accounts) session.getAttribute("loggedInAccount");
+//        String ownerEmail = owner.getEmail();
+//        PetDAO petDAO = new PetDAO();
+//        ArrayList<Pet> list_pet = petDAO.getAllPet(ownerEmail);
+//        session.setAttribute("list_pet", list_pet);
         request.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(request, response);
     }
 
