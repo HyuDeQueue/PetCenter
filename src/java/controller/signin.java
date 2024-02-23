@@ -90,10 +90,10 @@ public class signin extends HttpServlet {
             PetDAO petDAO = new PetDAO();
             ArrayList<Pet> userPet = petDAO.getAllPet(email);
             session.setAttribute("userPet", userPet);
-            if(thisAccount.getRole() == "admin"){
-                ArrayList<Accounts> allAccounts = accountsDAO.getAllAccounts();
-                session.setAttribute("list_accounts", allAccounts);
-            }
+//            if(thisAccount.getRole() == "admin"){
+//                ArrayList<Accounts> allAccounts = accountsDAO.getAllAccounts();
+//                session.setAttribute("list_accounts", allAccounts);
+//            }
             response.sendRedirect("Home");
         }
     }

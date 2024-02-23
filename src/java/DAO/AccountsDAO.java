@@ -76,7 +76,7 @@ public class AccountsDAO extends DBContext{
                     + "FROM [dbo].[Account]";
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            ArrayList<Accounts> AccountList = null;
+            ArrayList<Accounts> AccountList = new ArrayList<>();
             while(rs.next()){
                 Accounts account = new Accounts();
                 account.setEmail(rs.getString("Email")); 

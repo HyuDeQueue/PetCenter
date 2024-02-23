@@ -4,6 +4,9 @@
     Author     : Windows 10
 --%>
 
+<%@page import="DAO.AccountsDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Accounts"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -81,6 +84,13 @@
                             <th>Chi tiết</th>
                         </tr>
                     </thead>
+                    
+                    <%
+                        AccountsDAO accountsDAO = new AccountsDAO();
+                        ArrayList<Accounts> allAccounts = accountsDAO.getAllAccounts();
+                        session.setAttribute("list_accounts", allAccounts);
+                    %>
+                    
                     <c:if test="${list_accounts != null}">
                         <tbody>
                         <c:forEach var="accounts" items="${list_accounts}">
@@ -88,11 +98,11 @@
                                 <td>${loop.index + 1}</td>
                                 <td>${accounts.firstName} ${accounts.lastName}</td>
                                 <td>${accounts.sex}</td>
-                                <td>${accounts.Phone}</td>
+                                <td>${accounts.getPhone()}</td>
                                 <td>${accounts.email}</td>
                                 <td>${accounts.role}</td>
                                 <td>${accounts.accountStatus}</td>
-                                <td><button type="button" class="btn btn-outline-primary">Chi tiết</button></td>
+                                <td><button type="button" class="btn btn-outline-primary">View></button></td>
                             </tr>
                         </c:forEach>
                         </tbody>
