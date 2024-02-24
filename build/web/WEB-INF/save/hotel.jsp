@@ -47,27 +47,10 @@
                 font-weight: bold;
                 padding: 2% 8%;
             }
-            .cage h4{
-                font-weight: bold;
-                margin-top: 1%;
-                margin-bottom: 0;
-            }
             .cage p{
+                margin-top: 2%;
                 font-weight: bold;
-                margin: 1%;
-                font-size: 110%;
             }
-            #bookbutton{
-                margin: 1%;
-                
-            }
-            #bookbutton input{
-                padding: 1% 8%;
-                font-size: 200%;
-                font-weight: bold   ;
-                border-radius: 18px;
-            }
-            
         </style>
     </head>
     <body>
@@ -78,42 +61,61 @@
             <div class="mid row col-12">
                 <div class="cage col-12 col-md-4" style="padding: 0 0;">
                     <img src="resource/image/c1.jpg">
-                    <h4>Chuồng M</h4>
-                    <p>Dành cho thú cưng tối đa 10kg</p>
+                    <p>Chuồng M, dành cho thú cưng tối đa 10kg</p>
+                    <form action="petchoose" method="post">
+                        <input type="hidden" value="hotelBooking" name="booktype">
+                        <input type="hidden" value="cage A" name="cage">
+                        <input type="submit" class="btn btn-info" value="Book" />
+                    </form>
                 </div>
                 <div class="cage col-12 col-md-4" style="padding: 0 0;">
                     <img src="resource/image/c2.png">
-                    <h4>Chuồng L</h4>
-                    <p>Dành cho thú cưng tối đa 20kg</p>
+                    <p>Chuồng L, dành cho thú cưng tối đa 20kg</p>
+                    <form action="petchoose" method="post">
+                        <input type="hidden" value="hotelBooking" name="booktype">
+                        <input type="hidden" value="cage B" name="cage">
+                        <input type="submit" class="btn btn-info" value="Book" />
+                    </form>
                 </div>
                 <div class="cage col-12 col-md-4" style="padding: 0 0;">
                     <img src="resource/image/c3.jpg">
-                    <h4>Chuồng XL</h4>
-                    <p>Dành cho thú cưng tối đa 30kg</p>
+                    <p>Chuồng XL, dành cho thú cưng tối đa 30kg</p>
+                    <form action="petchoose" method="post">
+                        <input type="hidden" value="hotelBooking" name="booktype">
+                        <input type="hidden" value="cage C" name="cage">
+                        <input type="submit" class="btn btn-info" value="Book" />
+                    </form>
                 </div>
             </div>
+            
             <div class="mid row col-12">
                 <div class="cage col-12 col-md-4" style="padding: 0 0;">
                     <img src="resource/image/r1.jpg">
-                    <h4>Phòng Vip A</h4>
-                    <p>Dành cho thú cưng tối đa 10kg</p>
+                    <p>Phòng Vip A, dành cho thú cưng tối đa 10kg</p>
+                    <form action="petchoose" method="post">
+                        <input type="hidden" value="hotelBooking" name="booktype">
+                        <input type="hidden" value="room A" name="cage">
+                        <input type="submit" class="btn btn-info" value="Book" />
+                    </form>
                 </div>
                 <div class="cage col-12 col-md-4" style="padding: 0 0;">
                     <img src="resource/image/r2.jpg">
-                    <h4>Phòng Vip B</h4>
-                    <p>Dành cho thú cưng tối đa 20kg</p>
+                    <p>Phòng Vip B, dành cho thú cưng tối đa 20kg</p>
+                    <form action="petchoose" method="post">
+                        <input type="hidden" value="hotelBooking" name="booktype">
+                        <input type="hidden" value="room B" name="cage">
+                        <input type="submit" class="btn btn-info" value="Book" />
+                    </form>
                 </div>
                 <div class="cage col-12 col-md-4" style="padding: 0 0;">
                     <img src="resource/image/r3.jpg">
-                    <h4>Phòng Vip C</h4>
-                    <p>Dành cho thú cưng tối đa 30kg</p>
+                    <p>Phòng Vip C, dành cho thú cưng tối đa 30kg</p>
+                    <form action="petchoose" method="post">
+                        <input type="hidden" value="hotelBooking" name="booktype">
+                        <input type="hidden" value="room C" name="cage">
+                        <input type="submit" class="btn btn-info" value="Book" />
+                    </form>
                 </div>
-            </div>
-            <div id="bookbutton">
-                <form action="petchoose" method="post">
-                    <input type="hidden" value="hotelBooking" name="booktype">
-                    <input type="submit" class="btn btn-info" value="Book Now" />
-                </form>
             </div>
             <div id='foot'><%@include file="footer.jsp" %></div>
         </div>

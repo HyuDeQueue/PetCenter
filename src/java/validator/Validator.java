@@ -5,13 +5,28 @@
  */
 package validator;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 /**
  *
  * @author Windows 10
  */
 public class Validator {
     public String checkStringOptional(String msg){
-        if(msg == null || msg.trim().isEmpty()) return "Không có";
+        if(msg == null || msg.trim().isEmpty()) return "Không khai báo";
         else return msg;
+    }
+    public boolean checkValidDate(Date checkDate){
+        Date nowDate = Date.valueOf(LocalDate.now());
+        if(checkDate.before(nowDate)) return false;
+        else return true;
+    }
+    
+    public boolean checkValidCheckoutDate(Date checkinDate, Date checkoutDate){
+        if(!checkValidDate(checkinDate)) return false;
+        else if(!checkValidDate(checkoutDate)) return false;
+        else if(checkinDate.after(checkoutDate)) return false;
+        else return true;
     }
 }

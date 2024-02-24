@@ -57,7 +57,7 @@
                 <div class="col-12 col-md-2">
                     <img src="resource/image/petclinic.jpg">
                     <p>Khám chữa bệnh</p>
-                    <a href="servicebooking" class="btn btn-success">Tìm hiểu ngay</a>
+                    <a href="petchoose" class="btn btn-success">Tìm hiểu ngay</a>
                 </div>
                 <div class="col-12 col-md-2">
                     <img src="resource/image/pettrain.jpg">
@@ -72,17 +72,17 @@
                 <div class="col-12 col-md-2">
                     <img src="resource/image/petspa.jpg">
                     <p>Dịch vụ SPA</p>
-                    <a href="servicebooking" class="btn btn-success">Tìm hiểu ngay</a>
+                    <a href="petchoose" class="btn btn-success">Tìm hiểu ngay</a>
                 </div>
                 <div class="col-12 col-md-2">
                     <img src="resource/image/petgrooming.jpg">
                     <p>Cắt tỉa lông</p>
-                    <a href="servicebooking" class="btn btn-success">Tìm hiểu ngay</a>
+                    <a href="petchoose" class="btn btn-success">Tìm hiểu ngay</a>
                 </div>
                 <div class="col-12 col-md-2">
                     <img src="resource/image/petdoctor.jpg">
                     <p>Tư vấn y tế miễn phí</p>
-                    <a href="servicebooking" class="btn btn-success">Tìm hiểu ngay</a>
+                    <a href="petchoose" class="btn btn-success">Tìm hiểu ngay</a>
                 </div>
             </div>
             <div id="foot">

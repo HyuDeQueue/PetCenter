@@ -55,6 +55,17 @@
             #hero h2{
                 font-size: 130%;    
             }
+            #bookbutton{
+                margin-top: 1%;
+                text-align: center;
+                
+            }
+            #bookbutton input{
+                padding: 1% 8%;
+                font-size: 200%;
+                font-weight: bold   ;
+                border-radius: 18px;
+            }
         </style>
     </head>
     <body>
@@ -70,22 +81,19 @@
                     <h4>Gói A</h4>
                     <p>Thú cưng của bạn sẽ phát triển khả năng tương tác cơ bản với con người, bao gồm việc lắng nghe lệnh như bắt tay, đứng ngồi, và nhảy. Chúng cũng sẽ hiểu cách duy trì vệ sinh bằng cách đi đúng chỗ, và hành xử một cách lịch sự khi ở trong môi trường công cộng.</p>
                     <p>Thời gian dự kiến: 3 tháng</p>
-                    <form action="train" method="post">
-                        <input type="hidden" value="PlanA" name="plan">
-                        <input type="submit" value="Book" class="btn btn-success" name="Book">
-                    </form>
                 </div>
                 <div id="goiB" class="col-12 col-md-6">
                     <img src="resource/image/dogB.jpg">
-                    <h4>Gói B (Riêng của chó)</h4>
+                    <h4>Gói B</h4>
                     <p>Thú cưng của bạn sẽ dễ dàng thể hiện khả năng tương tác cao với chủ nhân, tham gia vào nhiều trò chơi hứng thú như bắt dĩa, tìm đồ, và rượt đuổi. Chúng cũng có khả năng canh nhà, giữ an ninh, trông nom trẻ em, và thậm chí hỗ trợ người mù và những công việc khác.</p>
                     <p>Thời gian dự kiến: 6 tháng</p>
-                    <!--<p style="color: red; font-weight: bold">*Lưu ý: Gói B chỉ dành cho chó</p>-->
-                    <form action="train" method="post">
-                        <input type="hidden" value="PlanB" name="plan">
-                        <input type="submit" value="Book" class="btn btn-success" name="Book">
-                    </form>
                 </div>
+            </div>
+            <div id="bookbutton">
+                <form action="petchoose" method="post">
+                    <input type="hidden" value="trainBooking" name="booktype">
+                    <input type="submit" value="Book Now" class="btn btn-success" name="Book">
+                </form>
             </div>
             <div id="foot">
                 <%@include file="footer.jsp" %>

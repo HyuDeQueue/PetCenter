@@ -44,6 +44,10 @@ public class petchoose extends HttpServlet {
         PetDAO petDAO = new PetDAO();
         ArrayList<Pet> list_pet = petDAO.getAllPet(ownerEmail);
         session.setAttribute("list_pet", list_pet);
+        
+        String redirectUrl = request.getParameter("booktype");
+        request.setAttribute("redirectUrl", redirectUrl);
+        
         request.getRequestDispatcher("/WEB-INF/view/petchoose.jsp").forward(request, response);
         }
     }

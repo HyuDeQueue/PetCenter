@@ -105,8 +105,8 @@
                                 <td>${accounts.email}</td>
                                 <td>${accounts.role}</td>
                                 <td id="AccountStatus">
-                                    <c:if test="${accounts.accountStatus == 'active'}"><form action="toggleuser" method="post"><input type="hidden" value="${accounts.email}" name="email"><input type="hidden" value="${accounts.accountStatus}" name="status"><button value="active" type="submit" class="btn btn-success">Active</button></form></c:if>
-                                    <c:if test="${accounts.accountStatus == 'blocked'}"><form action="toggleuser" method="post"><input type="hidden" value="${accounts.email}" name="email"><input type="hidden" value="${accounts.accountStatus}" name="status"><button value="blocked" type="submit" class="btn btn-danger">Blocked</button></form></c:if>
+                                    <c:if test="${accounts.accountStatus == 'active'}"><form action="toggleuser" method="post"><input type="hidden" value="${accounts.email}" name="email"><input type="hidden" value="${accounts.accountStatus}" name="status"><button value="active" type="submit" class="btn btn-success" onclick="return window.confirm('Bạn có chắc muốn khóa tài khoản người này?')">Active</button></form></c:if>
+                                    <c:if test="${accounts.accountStatus == 'blocked'}"><form action="toggleuser" method="post"><input type="hidden" value="${accounts.email}" name="email"><input type="hidden" value="${accounts.accountStatus}" name="status"><button value="blocked" type="submit" class="btn btn-danger" onclick="return window.confirm('Bạn có chắc muốn mở khóa tài khoản người này?')">Blocked</button></form></c:if>
                                 </td>
                                 <td><button type="button" class="btn btn-outline-primary">▼</button></td>
                             </tr>

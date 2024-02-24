@@ -63,7 +63,7 @@
             <%@include file="about.jsp" %>
             <div id="profile-pet">
                 <h4>Chọn các thú cưng cho booking:</h4>
-                <form>
+                <form id="bookingForm" action="" method="post">
                     <table class="table table-bordered table-hover table-striped">
                         <thead class="thead-dark">
                             <tr>
@@ -100,7 +100,7 @@
                         </tbody>
                     </table>
                     <div id="selected-pet"></div>
-                    <input type='hidden' name='redirectTo' value="<%= request.getAttribute("redirecturl") %>">
+                    <input type="hidden" name="redirectTo" id="redirectUrlInput" value="<%= request.getAttribute("redirectUrl") %>">
                     <input type="submit" value="Book" class="btn btn-success" />
                 </form>
             </div>
@@ -114,7 +114,7 @@
             }
 
                 var selectedPets = [];
-                var checkboxes = document.querySelectorAll('input[name="petchose"]:checked');
+                var checkboxes = document.querySelectorAll('input[name="pickpetchose"]:checked');
                 checkboxes.forEach(function(checkbox) {
                     var petName = checkbox.closest('tr').querySelector('td:first-child').innerText;
                     selectedPets.push(petName);
@@ -128,8 +128,16 @@
                     selectedPetDiv.innerText = "";
                 }
             }
+            window.onload = function() {
+                setFormAction();
+            };
 
-
+            function setFormAction() {
+                var form = document.getElementById('bookingForm');
+                var redirectUrlInput = document.getElementById('redirectUrlInput');
+                var redirectUrl = redirectUrlInput.value;
+                form.action = redirectUrl;
+            }
         </script>
     </body>
 </html>

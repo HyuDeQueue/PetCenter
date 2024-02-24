@@ -59,10 +59,10 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="hotel">Khách sạn thú cưng</a>
                             <a class="dropdown-item" href="train">Huấn luyện chó mèo</a>
-                            <a class="dropdown-item" href="servicebooking">Cắt tỉa lông</a> 
-                            <a class="dropdown-item" href="servicebooking">Tư vấn y tế miễn phí</a>
-                            <a class="dropdown-item" href="servicebooking">Khám chữa bệnh, tiêm phòng</a>
-                            <a class="dropdown-item" href="servicebooking">Dịch vụ spa</a>
+                            <a class="dropdown-item" href="petchoose">Cắt tỉa lông</a> 
+                            <a class="dropdown-item" href="petchoose">Tư vấn y tế miễn phí</a>
+                            <a class="dropdown-item" href="petchoose">Khám chữa bệnh, tiêm phòng</a>
+                            <a class="dropdown-item" href="petchoose">Dịch vụ spa</a>
                         </div>
                     </li>
                     <c:if test="${loggedInAccount == null}"><li class="nav-item">
@@ -81,8 +81,8 @@
                                 <div class="dropdown-divider"></div>
                                 <c:if test="${loggedInAccount.role == 'admin'}">
                                     <a class="dropdown-item" href="managecustomer">Quản lý người dùng</a>
-                                    <a class="dropdown-item" href="#">Quản lý đơn hàng</a>
                                     <a class="dropdown-item" href="#">Quản lý dịch vụ</a>
+                                    <a class="dropdown-item" href="#">Quản lý đơn hàng</a>
                                     <a class="dropdown-item" href="#">Quản lý phản hồi</a>
                                     <div class="dropdown-divider"></div>
                                 </c:if>

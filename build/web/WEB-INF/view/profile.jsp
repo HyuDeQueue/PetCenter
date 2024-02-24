@@ -177,7 +177,7 @@
                                                 <c:if test="${pet.petStatus == 'disable'}"><form action="togglepet" method="post" class="pet-form"><input type="hidden" name="petId" value="${pet.petId}"><input type="hidden" name="petStatus" value="${pet.petStatus}"><button type="submit" class="btn btn-secondary">Nghỉ ngơi</button></form></c:if>
                                             </td>
                                             <td><form action="editpet" method="post" class="pet-form"><input type="hidden" name="petId" value="${pet.petId}"><button type="submit" class="btn btn-warning">Chỉnh sửa</button></form></td>
-                                            <td><form action="deletepet" method="post" class="pet-form"><input type="hidden" name="petId" value="${pet.petId}"><button type="submit" class="btn btn-danger">Xóa thú cưng</button></form></td>
+                                            <td><form action="deletepet" method="post" class="pet-form"><input type="hidden" name="petId" value="${pet.petId}"><button type="submit" class="btn btn-danger" onclick="return window.confirm('Bạn có chắc muốn xóa thú cưng này?')">Xóa thú cưng</button></form></td>
                                         </tr>
                                     </c:if>
                                 </c:forEach>
