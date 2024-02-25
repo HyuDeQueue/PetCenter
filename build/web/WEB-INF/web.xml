@@ -72,6 +72,10 @@
         <servlet-name>toggleuser</servlet-name>
         <servlet-class>controller.toggleuser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>cattialong</servlet-name>
+        <servlet-class>controller.cattialong</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>toggleuser</servlet-name>
         <url-pattern>/toggleuser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cattialong</servlet-name>
+        <url-pattern>/cattialong</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

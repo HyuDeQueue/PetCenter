@@ -59,7 +59,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="hotel">Khách sạn thú cưng</a>
                             <a class="dropdown-item" href="train">Huấn luyện chó mèo</a>
-                            <a class="dropdown-item" href="petchoose">Cắt tỉa lông</a> 
+                            <a class="dropdown-item" href="cattialong">Cắt tỉa lông</a> 
                             <a class="dropdown-item" href="petchoose">Tư vấn y tế miễn phí</a>
                             <a class="dropdown-item" href="petchoose">Khám chữa bệnh, tiêm phòng</a>
                             <a class="dropdown-item" href="petchoose">Dịch vụ spa</a>

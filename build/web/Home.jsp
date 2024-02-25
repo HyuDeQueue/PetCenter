@@ -77,7 +77,7 @@
                 <div class="col-12 col-md-2">
                     <img src="resource/image/petgrooming.jpg">
                     <p>Cắt tỉa lông</p>
-                    <a href="petchoose" class="btn btn-success">Tìm hiểu ngay</a>
+                    <a href="cattialong" class="btn btn-success">Tìm hiểu ngay</a>
                 </div>
                 <div class="col-12 col-md-2">
                     <img src="resource/image/petdoctor.jpg">
