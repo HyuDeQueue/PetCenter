@@ -171,4 +171,17 @@ public class AccountsDAO extends DBContext{
         }
     }
 
+    public boolean checkRegisteredAccount(String email) {
+        try {
+            String sql = "SELECT [Email] FROM [dbo].[Account] WHERE [Email] LIKE ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            return rs.next(); // If there is a result, it means the email is registered
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
 }

@@ -5,6 +5,7 @@
  */
 package validator;
 
+import DAO.AccountsDAO;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -28,5 +29,10 @@ public class Validator {
         else if(!checkValidDate(checkoutDate)) return false;
         else if(checkinDate.after(checkoutDate)) return false;
         else return true;
+    }
+    
+    public boolean checkIfRegistered(String email){
+        AccountsDAO accountsDAO = new AccountsDAO();
+        return accountsDAO.checkRegisteredAccount(email);
     }
 }

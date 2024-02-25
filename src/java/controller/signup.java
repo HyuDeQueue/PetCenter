@@ -70,6 +70,12 @@ public class signup extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         Validator valid = new Validator();
         String email = request.getParameter("email");
+        if(valid.checkIfRegistered(email)){
+            String msg = "This email has been registered";
+            request.setAttribute("errorsignupmsg", msg);
+            request.getRequestDispatcher("/WEB-INF/view/signup.jsp").forward(request, response);
+            return;
+        }
         String password = request.getParameter("password");
         String fname = request.getParameter("firstName");
         String lname = request.getParameter("lastName");

@@ -71,6 +71,7 @@
           <div class="form-field">
             <button class="btn" type="submit">Register</button>
           </div>
+            <c:if test="${errorsignupmsg != null}"><p style="color: red; font-weight: bold; font-size: 110%; text-align: center; background-color: yellow">${errorsignupmsg}</p></c:if>
             <p id="signin">Already a user? <a href="signin">Sign in</a></p>
         </form>
     </body>
