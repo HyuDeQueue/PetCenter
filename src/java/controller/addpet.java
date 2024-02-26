@@ -8,10 +8,12 @@ package controller;
 import DAO.PetDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Pet;
 import validator.Validator;
 
@@ -47,10 +49,19 @@ public class addpet extends HttpServlet {
             String petBehavior = valid.checkStringOptional(request.getParameter("petBehavior"));
             String petFavFood = valid.checkStringOptional(request.getParameter("petFavFood"));
             String petStatus = "active";
+            if(valid.checkIfUserAlreadyHasThisPet(petName, ownerEmail)){
+                request.setAttribute("erroraddpetmsg", "There is already a pet with this name in your account's pet list");
+                request.getRequestDispatcher("/WEB-INF/view/addpet.jsp").forward(request, response);
+                return;
+            }
+            
             Pet newPet = new Pet(ownerEmail, petName, pexSex, petType, petWeight, petHeight, petLength, petStatus, petBehavior, petFavFood);
             PetDAO petDao = new PetDAO();
             petDao.AddPet(newPet);
-            response.sendRedirect("Home");
+            ArrayList<Pet> pet_list = petDao.getAllPet(ownerEmail);
+            HttpSession session = request.getSession();
+            session.setAttribute("userPet", pet_list);
+            response.sendRedirect("profile");
         }
     }
 
@@ -82,6 +93,7 @@ public class addpet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        //request.getRequestDispatcher("/WEB-INF/view/addpet").forward(request, response);
     }
 
     /**

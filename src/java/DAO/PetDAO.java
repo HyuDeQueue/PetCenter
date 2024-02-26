@@ -101,6 +101,25 @@ public class PetDAO extends DBContext{
         } catch (SQLException ex) {
             Logger.getLogger(PetDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
+    
+    public boolean checkSamePetSameMail(String petName, String email){
+        try {
+            String sql = "SELECT [Pet_Id]\n" +
+                         "FROM [dbo].[Pet]\n" +
+                         "WHERE [Pet_name] = ? AND [Email] = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, petName);
+            ps.setString(2, email);
+            ResultSet rs = ps.executeQuery();
+            boolean result = rs.next();
+            rs.close();
+            ps.close();
+            return result;
+        } catch (SQLException ex) {
+            Logger.getLogger(PetDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
 }

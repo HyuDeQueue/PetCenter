@@ -91,14 +91,14 @@ public class servicebooking extends HttpServlet {
         PetDAO petDAO = new PetDAO();
         ArrayList<Pet> allPet = petDAO.getAllPet(ownerEmail);
         ArrayList<Pet> selectedPet = new ArrayList<>();
-        for (int id : petIdsInt) {
-            for (Pet pet : allPet) {
-                if (pet.getPetId() == id) {
-                    selectedPet.add(pet);
-                    break; // Break out of inner loop once a match is found
-                }
-            }
-        }
+//        for (int id : petIdsInt) {
+//            for (Pet pet : allPet) {
+//                if (pet.getPetId() == id) {
+//                    selectedPet.add(pet);
+//                    break; // Break out of inner loop once a match is found
+//                }
+//            }
+//        }
         request.setAttribute("pickedPet", selectedPet);
         
      

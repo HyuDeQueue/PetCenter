@@ -58,7 +58,7 @@ public class profile extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        processRequest(request, response);
-        HttpSession session = request.getSession();
+//        HttpSession session = request.getSession();
         
 //        Accounts owner = (Accounts) session.getAttribute("loggedInAccount");
 //        String ownerEmail = owner.getEmail();

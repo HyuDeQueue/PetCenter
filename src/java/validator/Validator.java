@@ -6,6 +6,7 @@
 package validator;
 
 import DAO.AccountsDAO;
+import DAO.PetDAO;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -34,5 +35,10 @@ public class Validator {
     public boolean checkIfRegistered(String email){
         AccountsDAO accountsDAO = new AccountsDAO();
         return accountsDAO.checkRegisteredAccount(email);
+    }
+    
+    public boolean checkIfUserAlreadyHasThisPet(String petName, String email){
+        PetDAO petDAO = new PetDAO();
+        return petDAO.checkSamePetSameMail(petName, email);
     }
 }

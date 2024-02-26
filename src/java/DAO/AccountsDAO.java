@@ -177,11 +177,16 @@ public class AccountsDAO extends DBContext{
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
-            return rs.next(); // If there is a result, it means the email is registered
+            boolean result = rs.next(); // If there is a result, it means the email is registered
+            // Close ResultSet and PreparedStatement
+            rs.close();
+            ps.close();
+            return result;
         } catch (SQLException ex) {
             Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
+
 
 }
