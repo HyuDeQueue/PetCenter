@@ -9,7 +9,7 @@ package model;
  *
  * @author Windows 10
  */
-public class Pet {
+public class Pet{
     private int petId;
     private String ownerEmail;
     private String petName;

@@ -81,7 +81,7 @@
                                 <div class="dropdown-divider"></div>
                                 <c:if test="${loggedInAccount.role == 'admin'}">
                                     <a class="dropdown-item" href="managecustomer">Quản lý người dùng</a>
-                                    <a class="dropdown-item" href="#">Quản lý dịch vụ</a>
+                                    <a class="dropdown-item" href="manageservice">Quản lý dịch vụ</a>
                                     <a class="dropdown-item" href="#">Quản lý đơn hàng</a>
                                     <a class="dropdown-item" href="#">Quản lý phản hồi</a>
                                     <div class="dropdown-divider"></div>

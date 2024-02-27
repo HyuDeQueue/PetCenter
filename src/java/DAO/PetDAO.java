@@ -24,7 +24,6 @@ public class PetDAO extends DBContext{
                     + "([Email],[Pet_name],[Pet_sex],[Pet_type],[Pet_weight],[Pet_height],[Pet_length],[Pet_behavior],[Pet_favorite_food],[Pet_status])\n"
                     + "VALUES(? ,? ,? ,? ,? ,? ,? ,? ,? ,? );";
             PreparedStatement ps = connection.prepareStatement(sql);
-            
             ps.setString(1, newPet.getOwnerEmail());
             ps.setNString(2, newPet.getPetName());
             ps.setNString(3, newPet.getPetSex());
@@ -40,6 +39,7 @@ public class PetDAO extends DBContext{
         } catch (SQLException ex) {
             Logger.getLogger(PetDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
     public ArrayList<Pet> getAllPet(String ownerEmail){
         

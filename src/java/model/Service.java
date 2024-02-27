@@ -10,32 +10,20 @@ package model;
  * @author Windows 10
  */
 public class Service {
-    private String serviceId;
+    private int serviceId;
     private String serviceName;
-    private String serviceDescription;
-    private String servicePrice;
+    private int servicePrice;
     private double CageWidth;
     private double CageLength;
     private double CageHeight;
     private String serviceStatus;
 
-    public Service(String serviceId, String serviceName, String serviceDescription, String servicePrice, double CageWidth, double CageLength, double CageHeight, String serviceStatus) {
-        this.serviceId = serviceId;
-        this.serviceName = serviceName;
-        this.serviceDescription = serviceDescription;
-        this.servicePrice = servicePrice;
-        this.CageWidth = CageWidth;
-        this.CageLength = CageLength;
-        this.CageHeight = CageHeight;
-        this.serviceStatus = serviceStatus;
-    }
-
     public Service() {
     }
 
-    public Service(String serviceName, String serviceDescription, String servicePrice, double CageWidth, double CageLength, double CageHeight, String serviceStatus) {
+    public Service(int serviceId, String serviceName, int servicePrice, double CageWidth, double CageLength, double CageHeight, String serviceStatus) {
+        this.serviceId = serviceId;
         this.serviceName = serviceName;
-        this.serviceDescription = serviceDescription;
         this.servicePrice = servicePrice;
         this.CageWidth = CageWidth;
         this.CageLength = CageLength;
@@ -43,20 +31,11 @@ public class Service {
         this.serviceStatus = serviceStatus;
     }
 
-    public Service(String serviceName, String serviceDescription, String servicePrice, double CageWidth, double CageLength, double CageHeight) {
-        this.serviceName = serviceName;
-        this.serviceDescription = serviceDescription;
-        this.servicePrice = servicePrice;
-        this.CageWidth = CageWidth;
-        this.CageLength = CageLength;
-        this.CageHeight = CageHeight;
-    }
-
-    public String getServiceId() {
+    public int getServiceId() {
         return serviceId;
     }
 
-    public void setServiceId(String serviceId) {
+    public void setServiceId(int serviceId) {
         this.serviceId = serviceId;
     }
 
@@ -68,19 +47,11 @@ public class Service {
         this.serviceName = serviceName;
     }
 
-    public String getServiceDescription() {
-        return serviceDescription;
-    }
-
-    public void setServiceDescription(String serviceDescription) {
-        this.serviceDescription = serviceDescription;
-    }
-
-    public String getServicePrice() {
+    public int getServicePrice() {
         return servicePrice;
     }
 
-    public void setServicePrice(String servicePrice) {
+    public void setServicePrice(int servicePrice) {
         this.servicePrice = servicePrice;
     }
 
@@ -115,8 +86,6 @@ public class Service {
     public void setServiceStatus(String serviceStatus) {
         this.serviceStatus = serviceStatus;
     }
-    
-    
     
     
 }

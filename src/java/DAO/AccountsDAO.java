@@ -70,13 +70,39 @@ public class AccountsDAO extends DBContext{
             Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+//    public ArrayList<Accounts> getAllAccounts(){
+//        try {
+//            String sql = "SELECT [Email],[First_Name],[Last_name],[User_sex],[Phone],[Role],[Account_status]\n"
+//                    + "FROM [dbo].[Account]";
+//            PreparedStatement ps = connection.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            ArrayList<Accounts> AccountList = new ArrayList<>();
+//            while(rs.next()){
+//                Accounts account = new Accounts();
+//                account.setEmail(rs.getString("Email")); 
+//                account.setFirstName(rs.getString("First_Name")); 
+//                account.setLastName(rs.getString("Last_name")); 
+//                account.setSex(rs.getString("User_sex")); 
+//                account.setPhone(rs.getString("Phone"));
+//                account.setRole(rs.getString("Role"));
+//                account.setAccountStatus(rs.getString("Account_status"));
+//                AccountList.add(account);
+//            }
+//            rs.close();
+//            ps.close();
+//            return AccountList;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
+//            return null;
+//        }
+//    }
     public ArrayList<Accounts> getAllAccounts(){
         try {
-            String sql = "SELECT [Email],[First_Name],[Last_name],[User_sex],[Phone],[Role],[Account_status]\n"
+            String sql = "SELECT [First_Name],[Last_name],[User_sex],[Phone],[Email],[Role],[Account_status]\n"
                     + "FROM [dbo].[Account]";
+            ArrayList<Accounts> allAccounts = new ArrayList<>();
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            ArrayList<Accounts> AccountList = new ArrayList<>();
             while(rs.next()){
                 Accounts account = new Accounts();
                 account.setEmail(rs.getString("Email")); 
@@ -86,11 +112,11 @@ public class AccountsDAO extends DBContext{
                 account.setPhone(rs.getString("Phone"));
                 account.setRole(rs.getString("Role"));
                 account.setAccountStatus(rs.getString("Account_status"));
-                AccountList.add(account);
+                allAccounts.add(account);
             }
             rs.close();
             ps.close();
-            return AccountList;
+            return allAccounts;
         } catch (SQLException ex) {
             Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;

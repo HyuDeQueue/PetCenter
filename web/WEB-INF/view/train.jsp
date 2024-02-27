@@ -77,7 +77,7 @@
             </div>
             <div id="content" class="row">
                 <div id="goiA" class="col-12 col-md-6">
-                    <img src="resource/image/DogA.jpg">
+                    <img src="resource/image/dogA.jpg">
                     <h4>Gói A</h4>
                     <p>Thú cưng của bạn sẽ phát triển khả năng tương tác cơ bản với con người, bao gồm việc lắng nghe lệnh như bắt tay, đứng ngồi, và nhảy. Chúng cũng sẽ hiểu cách duy trì vệ sinh bằng cách đi đúng chỗ, và hành xử một cách lịch sự khi ở trong môi trường công cộng.</p>
                     <p>Thời gian dự kiến: 3 tháng</p>

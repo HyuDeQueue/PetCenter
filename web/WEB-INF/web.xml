@@ -76,6 +76,14 @@
         <servlet-name>cattialong</servlet-name>
         <servlet-class>controller.cattialong</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>manageservice</servlet-name>
+        <servlet-class>controller.manageservice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>toggleservice</servlet-name>
+        <servlet-class>controller.toggleservice</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
@@ -143,6 +151,14 @@
     <servlet-mapping>
         <servlet-name>cattialong</servlet-name>
         <url-pattern>/cattialong</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>manageservice</servlet-name>
+        <url-pattern>/manageservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>toggleservice</servlet-name>
+        <url-pattern>/toggleservice</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
