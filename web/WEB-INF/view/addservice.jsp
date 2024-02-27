@@ -79,7 +79,7 @@
             Giá tiền: <input type="number" name="servicePrice"><br>
             <div id="longServiceInputs">
                 Chiều dài lồng: <input type="number" step="0.01" name="cagelegnth"> <br>
-                Chiều rộng lồng: <input type="number" step="0.01" name="petwidth"> <br>
+                Chiều rộng lồng: <input type="number" step="0.01" name="cagewidth"> <br>
                 Chiều cao lồng: <input type="number" step="0.01" name="cageheight"> <br>
             </div>
             <input type="submit" class='btn btn-success' value="Thêm dịch vụ" />
