@@ -109,7 +109,7 @@
             </div>
 
 
-            <div id="user_list_table">
+            <div id="user_list_table" style="height: 200px; overflow: auto">
                 <table id="userTable" class="table table-bordered table-hover table-sm">
                     <thead>
                         <tr>
