@@ -154,7 +154,7 @@
                                             </form>
                                         </c:if>
                                     </td>
-                                    <td><button type="button" class="btn btn-outline-primary">▼</button></td>
+                                    <td><form><input type="hidden" value="${accounts.email}"> <button type="submit" class="btn btn-outline-primary">Xem chi tiết</button></form></td>
                                 </tr>
                             </c:forEach>
                         </c:if>

@@ -84,6 +84,10 @@
         <servlet-name>toggleservice</servlet-name>
         <servlet-class>controller.toggleservice</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addservice</servlet-name>
+        <servlet-class>controller.addservice</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
@@ -159,6 +163,10 @@
     <servlet-mapping>
         <servlet-name>toggleservice</servlet-name>
         <url-pattern>/toggleservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addservice</servlet-name>
+        <url-pattern>/addservice</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
