@@ -30,8 +30,8 @@
             }
             
             #profile-pet table{
-                width: 80%;
-                padding-right: 2%;
+                width: 100%;
+
             }
             
             
@@ -100,7 +100,16 @@
                         </tbody>
                     </table>
                     <div id="selected-pet"></div>
-                    <input type="hidden" name="redirectTo" id="redirectUrlInput" value="<%= request.getAttribute("redirectUrl") %>">
+                    <!--<input type="hidden" name="redirectTo" id="redirectUrlInput" value="<%= request.getAttribute("redirectUrl")%>">-->
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="ServiceType1" name="serviceType" class="custom-control-input" value="shorttime" required>
+                        <label class="custom-control-label" for="ServiceType1">Trong ngày</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="serviceType2" name="serviceType" class="custom-control-input" value="shorttime" required>
+                        <label class="custom-control-label" for="serviceType2">Dài ngày</label>
+                    </div>
+                    <br>
                     <input type="submit" value="Book" class="btn btn-success" />
                 </form>
             </div>

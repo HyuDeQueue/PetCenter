@@ -76,9 +76,9 @@
             <option value="Mèo">Mèo</option>
             <option value="Khác" selected="true">Khác</option>
         </select> <br>
-            Cân nặng: <input type="number" step="0.01" name="petweight" required> <br>
-            Chiều dài: <input type="number" step="0.01" name="petlength" required> <br>
-            Chiều cao: <input type="number" step="0.01" name="petheight" required> <br>
+            Cân nặng(cm): <input type="number" step="0.01" name="petweight" required min="0"> <br>
+            Chiều dài(cm): <input type="number" step="0.01" name="petlength" required min="0"> <br>
+            Chiều cao(cm): <input type="number" step="0.01" name="petheight" required min="0"> <br>
             Tính cách thú cưng: <input type="text" name="petBehavior" placeholder="Không bắt buộc"> <br>
             Đồ ăn ưa thích: <input type="text" name="petFavFood" placeholder="Không bắt buộc"> <br>
             <input type="submit" class='btn btn-success' value="Thêm thú cưng" />

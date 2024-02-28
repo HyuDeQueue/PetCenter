@@ -50,6 +50,7 @@ public class addservice extends HttpServlet {
             Service newService = new Service();
             newService.setServiceName(name);
             newService.setServicePrice(ServicePrice);
+            newService.setServiceType(serviceType);
             newService.setServiceStatus(serviceStatus);
             newService.setCageWidth(cageWidth);
             newService.setCageLength(cageLength);

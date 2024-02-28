@@ -19,38 +19,82 @@ import java.util.ArrayList;
  * @author Windows 10
  */
 public class AccountsDAO extends DBContext{
-    public Accounts SigninCheck(Accounts account) {
+//    public Accounts SigninCheck2(Accounts account) {
+//        try {
+//            String sql = "SELECT [Email],[Password],[First_Name],[Last_name],[User_sex],[Phone],[Role],[Account_status]\n"
+//                    + "From [dbo].[Account]\n"
+//                    + "Where [Email] = ?";
+//            PreparedStatement ps = connection.prepareStatement(sql);
+//            ps.setString(1, account.getEmail());
+//            ResultSet rs = ps.executeQuery();
+//            if (rs.next()) {
+//                String hashedPasswordFromDatabase = rs.getString("Password");
+//                String userProvidedPassword = account.getPassword();
+//
+//                if (BCrypt.verifyer().verify(userProvidedPassword.toCharArray(), hashedPasswordFromDatabase).verified) {
+//                    Accounts foundAccount = new Accounts();
+//                    foundAccount.setEmail(rs.getString("Email"));
+//                    foundAccount.setRole(rs.getNString("Role"));
+//                    foundAccount.setAccountStatus(rs.getNString("Account_status"));
+//                    foundAccount.setFirstName(rs.getNString("First_Name"));
+//                    foundAccount.setLastName(rs.getNString("Last_name"));
+//                    foundAccount.setPhone(rs.getNString("Phone"));
+//                    foundAccount.setSex(rs.getNString("User_sex"));
+//                    rs.close();
+//                    ps.close();
+//                    return foundAccount;
+//                }
+//            }
+//            return null;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
+//            return null;
+//        }
+//    }
+    
+    
+    public Accounts SigninCheck(Accounts accounts) {
         try {
-            String sql = "SELECT [Email],[Password],[First_Name],[Last_name],[User_sex],[Phone],[Role],[Account_status]\n"
-                    + "From [dbo].[Account]\n"
-                    + "Where [Email] = ?;";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, account.getEmail());
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                String hashedPasswordFromDatabase = rs.getString("Password");
-                String userProvidedPassword = account.getPassword();
+            String sql = "SELECT [First_Name], [Password], [Role], [Phone], [Last_name], [Account_status], [Email], [User_sex] "
+                    + "FROM [dbo].[Account] "
+                    + "WHERE [Email] = ?";
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, accounts.getEmail());
+            ResultSet rs = pstmt.executeQuery();
 
-                if (BCrypt.verifyer().verify(userProvidedPassword.toCharArray(), hashedPasswordFromDatabase).verified) {
-                    Accounts foundAccount = new Accounts();
-                    foundAccount.setEmail(rs.getString("Email"));
-                    foundAccount.setRole(rs.getNString("Role"));
-                    foundAccount.setAccountStatus(rs.getNString("Account_status"));
-                    foundAccount.setFirstName(rs.getNString("First_Name"));
-                    foundAccount.setLastName(rs.getNString("Last_name"));
-                    foundAccount.setPhone(rs.getNString("Phone"));
-                    foundAccount.setSex(rs.getNString("User_sex"));
+            if (rs.next()) {
+                String storedPassword = rs.getString("Password");
+                String enteredPassword = accounts.getPassword();
+
+                if (BCrypt.verifyer().verify(enteredPassword.toCharArray(), storedPassword).verified) {
+                    // Mật khẩu trùng khớp, có thể thực hiện các hành động phù hợp ở đây
+                    Accounts acc = new Accounts();
+                    acc.setEmail(rs.getString("Email"));
+                    acc.setFirstName(rs.getNString("First_name"));
+                    acc.setLastName(rs.getNString("Last_name")); // Đặt họ của người dùng
+                    acc.setRole(rs.getNString("Role")); // Đặt vai trò của người dùng
+                    acc.setAccountStatus(rs.getNString("Account_status")); // Đặt trạng thái tài khoản
+                    acc.setPhone(rs.getString("Phone")); // Đặt số điện thoại của người dùng
+                    acc.setSex(rs.getNString("User_sex")); // Đặt giới tính của người dùng
+                    // Có thể đặt các thuộc tính khác của tài khoản ở đây
+
                     rs.close();
-                    ps.close();
-                    return foundAccount;
+                    pstmt.close();
+                    return acc;
+                } else {
+                    // Mật khẩu không trùng khớp
+                    return null;
                 }
+            } else {
+                // Không tìm thấy tài khoản với email đã cung cấp
+                return null;
             }
-            return null;
         } catch (SQLException ex) {
             Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
+    
     public void CreateAccount(Accounts accounts){
         try {
             String sql = "INSERT Into [dbo].[Account] ([Email],[Password],[First_Name],[Last_name],[User_sex],[Phone],[Role],[Account_status])\n"

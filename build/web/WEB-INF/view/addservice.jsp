@@ -68,19 +68,19 @@
             <p>Tên dịch vụ: <input type="text" name="servicename" required="true"></p>
             <p>Loại dịch vụ:
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="serviceType" id="inlineRadio1" onchange="toggleInputs()" value="short" required>
+                    <input class="form-check-input" type="radio" name="serviceType" id="inlineRadio1" onchange="toggleInputs()" value="shorttime" required>
                     <label class="form-check-label" for="inlineRadio1">Trong ngày</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="serviceType" id="inlineRadio2" value="long" checked onchange="toggleInputs()" required>
+                    <input class="form-check-input" type="radio" name="serviceType" id="inlineRadio2" value="longtime" checked onchange="toggleInputs()" required>
                     <label class="form-check-label" for="inlineRadio2">Dài ngày</label>
                 </div>
             </p>
-            Giá tiền: <input type="number" name="servicePrice" required><br>
+            Giá tiền: <input type="number" name="servicePrice" required min="0"><br>
             <div id="longServiceInputs">
-                Chiều dài lồng: <input type="number" step="0.01" name="cagelength"> <br>
-                Chiều rộng lồng: <input type="number" step="0.01" name="cagewidth"> <br>
-                Chiều cao lồng: <input type="number" step="0.01" name="cageheight"> <br>
+                Chiều dài lồng(cm): <input type="number" step="0.01" name="cagelength" min="0"> <br>
+                Chiều rộng lồng(cm): <input type="number" step="0.01" name="cagewidth" min="0"> <br>
+                Chiều cao lồng(cm): <input type="number" step="0.01" name="cageheight" min="0"> <br>
             </div>
             <input type="submit" class="btn btn-success" value="Thêm dịch vụ" />
         </form>

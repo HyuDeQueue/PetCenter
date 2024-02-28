@@ -22,15 +22,16 @@ public class ServiceDAO extends DBContext{
    
     public void CreateService(Service service){
         try {
-            String sql="INSERT INTO [dbo].[Services] ([Service_name],[Service_status],[Service_price],[Cage_Width],[Cage_Length],[Cage_Height])\n"
-                    + "VALUES (?,?,?,?,?,?);";
+            String sql="INSERT INTO [dbo].[Services] ([Service_name],[Service_status],[Service_price],[Service_type],[Cage_Width],[Cage_Length],[Cage_Height])\n"
+                    + "VALUES (?,?,?,?,?,?,?);";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setNString(1, service.getServiceName());
             ps.setNString(2, service.getServiceStatus());
             ps.setInt(3, service.getServicePrice());
-            ps.setFloat(4, service.getCageWidth());
-            ps.setFloat(5, service.getCageLength());
-            ps.setFloat(6, service.getCageHeight());
+            ps.setNString(4, service.getServiceType());
+            ps.setFloat(5, service.getCageWidth());
+            ps.setFloat(6, service.getCageLength());
+            ps.setFloat(7, service.getCageHeight());
             ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {
@@ -55,7 +56,7 @@ public class ServiceDAO extends DBContext{
     
     public ArrayList<Service> GetAllServices(){
         try {
-            String sql = "SELECT [ServiceId],[Service_name],[Service_status],[Service_price],[Cage_Width],[Cage_Length],[Cage_Height]\n"
+            String sql = "SELECT [ServiceId],[Service_name],[Service_status],[Service_price],[Service_type],[Cage_Width],[Cage_Length],[Cage_Height]\n"
                     + "FROM [dbo].[Services] ORDER BY [ServiceId] ASC";
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -64,8 +65,9 @@ public class ServiceDAO extends DBContext{
                 Service service = new Service();
                 service.setServiceId(rs.getInt("ServiceId"));
                 service.setServiceName(rs.getString("Service_name"));
-                service.setServiceStatus(rs.getString("Service_status"));
+                service.setServiceStatus(rs.getNString("Service_status"));
                 service.setServicePrice(rs.getInt("Service_price"));
+                service.setServiceType(rs.getNString("Service_type"));
                 service.setCageWidth(rs.getFloat("Cage_Width"));
                 service.setCageLength(rs.getFloat("Cage_Length"));
                 service.setCageHeight(rs.getFloat("Cage_Height"));
@@ -82,7 +84,7 @@ public class ServiceDAO extends DBContext{
     
     public Service GetService(int serviceId){
         try {
-            String sql = "SELECT [ServiceId],[Service_name],[Service_status],[Service_price],[Cage_Width],[Cage_Length],[Cage_Height]\n"
+            String sql = "SELECT [ServiceId],[Service_name],[Service_status],[Service_price],[Service_type],[Cage_Width],[Cage_Length],[Cage_Height]\n"
                     + "FROM [dbo].[Services]\n"
                     + "WHERE [ServiceId] = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -95,6 +97,7 @@ public class ServiceDAO extends DBContext{
                 service.setServiceName(rs.getString("Service_name"));
                 service.setServiceStatus(rs.getString("Service_status"));
                 service.setServicePrice(rs.getInt("Service_price"));
+                service.setServiceStatus(rs.getNString("Service_type"));
                 service.setCageWidth(rs.getFloat("Cage_Width"));
                 service.setCageLength(rs.getFloat("Cage_Length"));
                 service.setCageHeight(rs.getFloat("Cage_Height"));
@@ -108,12 +111,13 @@ public class ServiceDAO extends DBContext{
         }
     }
 
-    public void UpdateSerice(Service service) {
+    public void UpdateService(Service service) {
         try {
             String sql = "UPDATE [dbo].[Services] \n"
                     + "SET\n"
                     + "[Service_name] = ?,\n"
                     + "[Service_price] = ?,\n"
+                    + "[Service_type] = ?,\n"
                     + "[Cage_Width] = ?,\n"
                     + "[Cage_Length] = ?,\n"
                     + "[Cage_Height] = ?\n"
@@ -121,10 +125,11 @@ public class ServiceDAO extends DBContext{
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setNString(1, service.getServiceName());
             ps.setInt(2, service.getServicePrice());
-            ps.setFloat(3, service.getCageWidth());
-            ps.setFloat(4, service.getCageLength());
-            ps.setFloat(5, service.getCageHeight());
-            ps.setInt(6,service.getServiceId());
+            ps.setNString(3, service.getServiceType());
+            ps.setFloat(4, service.getCageWidth());
+            ps.setFloat(5, service.getCageLength());
+            ps.setFloat(6, service.getCageHeight());
+            ps.setInt(7,service.getServiceId());
             ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {

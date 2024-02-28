@@ -15,6 +15,7 @@ public class Service implements Serializable{
     private int serviceId;
     private String serviceName;
     private int servicePrice;
+    private String serviceType;
     private float CageWidth;
     private float CageLength;
     private float CageHeight;
@@ -23,10 +24,11 @@ public class Service implements Serializable{
     public Service() {
     }
 
-    public Service(int serviceId, String serviceName, int servicePrice, float CageWidth, float CageLength, float CageHeight, String serviceStatus) {
+    public Service(int serviceId, String serviceName, int servicePrice, String serviceType, float CageWidth, float CageLength, float CageHeight, String serviceStatus) {
         this.serviceId = serviceId;
         this.serviceName = serviceName;
         this.servicePrice = servicePrice;
+        this.serviceType = serviceType;
         this.CageWidth = CageWidth;
         this.CageLength = CageLength;
         this.CageHeight = CageHeight;
@@ -55,6 +57,14 @@ public class Service implements Serializable{
 
     public void setServicePrice(int servicePrice) {
         this.servicePrice = servicePrice;
+    }
+
+    public String getServiceType() {
+        return serviceType;
+    }
+
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
     }
 
     public float getCageWidth() {
@@ -88,8 +98,5 @@ public class Service implements Serializable{
     public void setServiceStatus(String serviceStatus) {
         this.serviceStatus = serviceStatus;
     }
-
-    
-    
     
 }

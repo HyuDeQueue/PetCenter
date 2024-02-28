@@ -45,6 +45,9 @@ public class editservice extends HttpServlet {
             if(request.getParameter("ServicePrice") == null || request.getParameter("ServicePrice").trim().isEmpty()) newPrice = selectedService.getServicePrice();
             else newPrice = Integer.parseInt(request.getParameter("ServicePrice"));
             
+            String newType = request.getParameter("serviceType");
+            if(newType == null || newType.trim().isEmpty()) newType = selectedService.getServiceType();
+            
             float newCageLength = -1;
             if(request.getParameter("cagelength") == null || request.getParameter("cagelength").trim().isEmpty()) newCageLength = selectedService.getCageLength();
             else newCageLength = Float.parseFloat(request.getParameter("cagelength"));
@@ -61,11 +64,12 @@ public class editservice extends HttpServlet {
             updateService.setServiceId(selectedService.getServiceId());
             updateService.setServiceName(newName);
             updateService.setServicePrice(newPrice);
+            updateService.setServiceType(newType);
             updateService.setCageWidth(newCageWidth);
             updateService.setCageLength(newCageLength);
             updateService.setCageHeight(newCageHeight);
             updateService.setServiceStatus(selectedService.getServiceStatus());
-            serviceDAO.UpdateSerice(updateService);
+            serviceDAO.UpdateService(updateService);
             
             response.sendRedirect("manageservice");
         }

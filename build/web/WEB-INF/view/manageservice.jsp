@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <style>
@@ -84,6 +85,7 @@
                             <th>#</th>
                             <th>Tên dịch vụ</th>
                             <th>Giá tiền dịch vụ</th>
+                            <th>Loại dịch vụ</th>
                             <th>Chiều dài lồng(optional)</th>
                             <th>Chiều rộng lồng(optional)</th>
                             <th>Chiều cao lồng(optional)</th>
@@ -91,12 +93,14 @@
                             <th>Chỉnh sửa</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="service-body">
                         <c:forEach var="service" items="${list_service}">
                             <tr>
                                 <td>${service.getServiceId()}</td>
                                 <td>${service.getServiceName()}</td>
                                 <td>${service.getServicePrice()}đ</td>
+                                <c:if test="${service.getServiceType() == 'shorttime'}"><td>Trong ngày</td></c:if>
+                                <c:if test="${service.getServiceType() == 'longtime'}"><td>Dài ngày</td></c:if>
                                 <td>${service.getCageLength()}</td>
                                 <td>${service.getCageWidth()}</td>
                                 <td>${service.getCageHeight()}</td>
