@@ -1,4 +1,4 @@
-<%-- 
+    <%-- 
     Document   : profile
     Created on : Jan 20, 2024, 2:39:04 PM
     Author     : Windows 10
@@ -113,7 +113,6 @@
                 <div class="col-12 col-md-3" id="profile-pic-side">
                     <%
                         Accounts accounts = (Accounts) session.getAttribute("loggedInAccount");
-                        
                     %>
                     
                     <c:choose>

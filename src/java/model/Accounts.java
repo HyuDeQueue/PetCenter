@@ -5,11 +5,13 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Windows 10
  */
-public class Accounts {
+public class Accounts implements Serializable{
     private String email;
     private String password;
     private String firstName;

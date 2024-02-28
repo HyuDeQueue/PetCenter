@@ -5,13 +5,14 @@
  */
 package model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
  *
  * @author Windows 10
  */
-public class Message {
+public class Message implements Serializable{
     private int MessageId;
     private String Message;
     private Date MessageDate;

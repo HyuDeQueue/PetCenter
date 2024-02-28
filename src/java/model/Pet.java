@@ -5,11 +5,13 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Windows 10
  */
-public class Pet{
+public class Pet implements Serializable{
     private int petId;
     private String ownerEmail;
     private String petName;

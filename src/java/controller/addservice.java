@@ -5,12 +5,14 @@
  */
 package controller;
 
+import DAO.ServiceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Service;
 
 /**
  *
@@ -32,7 +34,29 @@ public class addservice extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            request.getRequestDispatcher("/WEB-INF/view/addservice.jsp").forward(request, response);
+            request.setCharacterEncoding("UTF-8");
+            String name = request.getParameter("servicename");
+            String serviceType = request.getParameter("serviceType");
+            float cageLength = 0;
+            float cageWidth = 0;
+            float cageHeight = 0;
+            if(serviceType.equals("long")){
+                cageLength = Float.parseFloat(request.getParameter("cagelength"));
+                cageWidth = Float.parseFloat(request.getParameter("cagewidth"));
+                cageHeight =  Float.parseFloat(request.getParameter("cageheight"));
+            }
+            int ServicePrice = Integer.parseInt(request.getParameter("servicePrice"));
+            String serviceStatus = "active";
+            Service newService = new Service();
+            newService.setServiceName(name);
+            newService.setServicePrice(ServicePrice);
+            newService.setServiceStatus(serviceStatus);
+            newService.setCageWidth(cageWidth);
+            newService.setCageLength(cageLength);
+            newService.setCageHeight(cageHeight);
+            ServiceDAO serviceDAO = new ServiceDAO();
+            serviceDAO.CreateService(newService);
+            response.sendRedirect("manageservice");
         }
     }
 
@@ -48,7 +72,7 @@ public class addservice extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("/WEB-INF/view/addservice.jsp").forward(request, response);
     }
 
     /**

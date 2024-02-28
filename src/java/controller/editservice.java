@@ -5,7 +5,6 @@
  */
 package controller;
 
-import DAO.ServiceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Windows 10
  */
-public class toggleservice extends HttpServlet {
+public class editservice extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,15 +32,6 @@ public class toggleservice extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            int serviceId = Integer.parseInt(request.getParameter("toggleServiceId"));
-            String serviceStatus = request.getParameter("toggleServiceStatus");
-            ServiceDAO serviceDAO = new ServiceDAO();
-            if(serviceStatus.equals("active")){
-                serviceDAO.toggleService(serviceId,"disabled");
-            }
-            else{
-                serviceDAO.toggleService(serviceId,"active");
-            }
             response.sendRedirect("manageservice");
         }
     }
@@ -58,7 +48,7 @@ public class toggleservice extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/view/manageservice.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/view/editservice.jsp").forward(request, response);
     }
 
     /**

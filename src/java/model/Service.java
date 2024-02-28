@@ -5,23 +5,25 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Windows 10
  */
-public class Service {
+public class Service implements Serializable{
     private int serviceId;
     private String serviceName;
     private int servicePrice;
-    private double CageWidth;
-    private double CageLength;
-    private double CageHeight;
+    private float CageWidth;
+    private float CageLength;
+    private float CageHeight;
     private String serviceStatus;
 
     public Service() {
     }
 
-    public Service(int serviceId, String serviceName, int servicePrice, double CageWidth, double CageLength, double CageHeight, String serviceStatus) {
+    public Service(int serviceId, String serviceName, int servicePrice, float CageWidth, float CageLength, float CageHeight, String serviceStatus) {
         this.serviceId = serviceId;
         this.serviceName = serviceName;
         this.servicePrice = servicePrice;
@@ -55,27 +57,27 @@ public class Service {
         this.servicePrice = servicePrice;
     }
 
-    public double getCageWidth() {
+    public float getCageWidth() {
         return CageWidth;
     }
 
-    public void setCageWidth(double CageWidth) {
+    public void setCageWidth(float CageWidth) {
         this.CageWidth = CageWidth;
     }
 
-    public double getCageLength() {
+    public float getCageLength() {
         return CageLength;
     }
 
-    public void setCageLength(double CageLength) {
+    public void setCageLength(float CageLength) {
         this.CageLength = CageLength;
     }
 
-    public double getCageHeight() {
+    public float getCageHeight() {
         return CageHeight;
     }
 
-    public void setCageHeight(double CageHeight) {
+    public void setCageHeight(float CageHeight) {
         this.CageHeight = CageHeight;
     }
 
@@ -86,6 +88,8 @@ public class Service {
     public void setServiceStatus(String serviceStatus) {
         this.serviceStatus = serviceStatus;
     }
+
+    
     
     
 }

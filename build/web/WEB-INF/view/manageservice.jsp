@@ -101,10 +101,10 @@
                                 <td>${service.getCageLength()}</td>
                                 <td>${service.getCageWidth()}</td>
                                 <td>${service.getCageHeight()}</td>
-                                <c:if test="${service.getServiceStatus() == 'active'}"><td><input class="btn btn-outline-success" type="submit" value="Hoạt động"></td></c:if>
-                                <c:if test="${service.getServiceStatus() == 'disabled'}"><td><input class="btn btn-outline-danger" type="submit" value="Tạm ngưng"></td></c:if>
-                                <td><form><input type="hidden" value="${service.getServiceId()}" name="toggleServiceId"><input class="btn btn-outline-primary" type="submit" name="chinhsua" value="Chỉnh sửa"></form></td>
-                                <td><form><input type="hidden" value="${service.getServiceId()}" name="deleteServiceId"><input class="btn btn-danger" type="submit" name="chinhsua" value="Xóa"></form></td>
+                                <c:if test="${service.getServiceStatus() == 'active'}"><td><form action="toggleservice" method="post"><input type="hidden" value="${service.getServiceId()}" name="toggleServiceId"><input type="hidden" value="${service.getServiceStatus()}" name="toggleServiceStatus"><input class="btn btn-outline-success" type="submit" value="Hoạt động"></form></td></c:if>
+                                <c:if test="${service.getServiceStatus() == 'disabled'}"><td><form action="toggleservice" method="post"><input type="hidden" value="${service.getServiceId()}" name="toggleServiceId"><input type="hidden" value="${service.getServiceStatus()}" name="toggleServiceStatus"><input class="btn btn-outline-danger" type="submit" value="Tạm ngưng"></form></td></c:if>
+                                <td><form><input type="hidden" value="${service.getServiceId()}" name="editServiceId"><input class="btn btn-outline-primary" type="submit" name="chinhsua" value="Chỉnh sửa"></form></td>
+                                <td><form ><input type="hidden" value="${service.getServiceId()}" name="deleteServiceId"><input class="btn btn-danger" type="submit" name="chinhsua" value="Xóa"></form></td>
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -112,9 +112,7 @@
                 
                 </div>
                 <div id="createservicebutton">
-                    <form>
-                        <input type="submit" class="btn btn-info" name="" value="Tạo thêm dịch vụ">
-                    </form>
+                     <a href="addservice" class="btn btn-info" >Tạo thêm dịch vụ</a>
                 </div>
             </div>
                 

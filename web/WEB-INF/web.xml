@@ -88,6 +88,14 @@
         <servlet-name>addservice</servlet-name>
         <servlet-class>controller.addservice</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>petdetail</servlet-name>
+        <servlet-class>controller.petdetail</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editservice</servlet-name>
+        <servlet-class>controller.editservice</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
@@ -167,6 +175,14 @@
     <servlet-mapping>
         <servlet-name>addservice</servlet-name>
         <url-pattern>/addservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>petdetail</servlet-name>
+        <url-pattern>/petdetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editservice</servlet-name>
+        <url-pattern>/editservice</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

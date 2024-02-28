@@ -5,13 +5,14 @@
  */
 package model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
  *
  * @author Windows 10
  */
-public class BookingDetail {
+public class BookingDetail implements Serializable{
     private int DetailId;
     private int currentPrice;
     private Date CheckinDate;

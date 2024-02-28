@@ -154,7 +154,26 @@
                                             </form>
                                         </c:if>
                                     </td>
-                                    <td><form><input type="hidden" value="${accounts.email}"> <button type="submit" class="btn btn-outline-primary">Xem chi tiết</button></form></td>
+                                   <td>
+    <form>
+        <input type="hidden" value="${accounts.email}">
+        <button type="button" class="btn btn-outline-primary detail-button" data-email="${accounts.email}">Xem chi tiết</button>
+    </form>
+</td>
+<script>
+    // Bắt sự kiện khi người dùng click vào nút "Xem chi tiết"
+    document.addEventListener("DOMContentLoaded", function() {
+        const detailButtons = document.querySelectorAll(".detail-button");
+
+        detailButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                const email = button.dataset.email; // Lấy giá trị email từ trường data-email của nút
+                window.location.href = "petdetail?email=" + email; // Chuyển hướng đến trang "petdetail" với tham số email
+            });
+        });
+    });
+</script>
+
                                 </tr>
                             </c:forEach>
                         </c:if>

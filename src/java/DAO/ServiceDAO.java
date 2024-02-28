@@ -20,11 +20,34 @@ import model.Service;
  */
 public class ServiceDAO extends DBContext{
    
-    public void CreateService(){
+    public void CreateService(Service service){
         try {
             String sql="INSERT INTO [dbo].[Services] ([Service_name],[Service_status],[Service_price],[Cage_Width],[Cage_Length],[Cage_Height])\n"
                     + "VALUES (?,?,?,?,?,?);";
             PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setNString(1, service.getServiceName());
+            ps.setNString(2, service.getServiceStatus());
+            ps.setInt(3, service.getServicePrice());
+            ps.setFloat(4, service.getCageWidth());
+            ps.setFloat(5, service.getCageLength());
+            ps.setFloat(6, service.getCageHeight());
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void toggleService(int serviceId, String status){
+        try {
+            String sql="UPDATE [dbo].[Services]\n"
+                    + "SET Service_status = ?\n"
+                    + "WHERE ServiceId = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, status);
+            ps.setInt(2, serviceId);
+            ps.executeUpdate();
+            ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(ServiceDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
