@@ -62,8 +62,9 @@
             <%@include file="about.jsp" %>
             <div class="addpet-form">
                 <h1>Chỉnh sửa dịch vụ</h1>
-                <form action="addservice" method="post">
-                    <p>Tên dịch vụ: <input type="text" name="servicename" required="true"></p>
+                <form action="editservice" method="post">
+                    <input type="hidden" name="selectedService" value="${selectedServiceId}">
+                    <p>Tên dịch vụ: <input type="text" name="ServiceName"></p>
                     <p>Loại dịch vụ:
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="serviceType" id="inlineRadio1" onchange="toggleInputs()" value="short" required>
@@ -74,13 +75,13 @@
                             <label class="form-check-label" for="inlineRadio2">Dài ngày</label>
                         </div>
                     </p>
-                    Giá tiền: <input type="number" name="servicePrice"><br>
+                    Giá tiền: <input type="number" name="ServicePrice"><br>
                     <div id="longServiceInputs">
-                        Chiều dài lồng: <input type="number" step="0.01" name="cagelegnth"> <br>
+                        Chiều dài lồng: <input type="number" step="0.01" name="cagelength"> <br>
                         Chiều rộng lồng: <input type="number" step="0.01" name="cagewidth"> <br>
                         Chiều cao lồng: <input type="number" step="0.01" name="cageheight"> <br>
                     </div>
-                    <input type="submit" class="btn btn-success" value="Thêm dịch vụ" />
+                    <input type="submit" class="btn btn-success" value="Chỉnh sửa dịch vụ" />
                 </form>
             </div>
             <div id="foot"><%@include file="footer.jsp" %></div>

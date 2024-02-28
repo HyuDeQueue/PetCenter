@@ -76,7 +76,7 @@
                     <label class="form-check-label" for="inlineRadio2">Dài ngày</label>
                 </div>
             </p>
-            Giá tiền: <input type="number" name="servicePrice"><br>
+            Giá tiền: <input type="number" name="servicePrice" required><br>
             <div id="longServiceInputs">
                 Chiều dài lồng: <input type="number" step="0.01" name="cagelength"> <br>
                 Chiều rộng lồng: <input type="number" step="0.01" name="cagewidth"> <br>

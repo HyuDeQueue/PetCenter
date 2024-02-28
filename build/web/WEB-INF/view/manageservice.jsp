@@ -89,7 +89,6 @@
                             <th>Chiều cao lồng(optional)</th>
                             <th>Trạng thái</th>
                             <th>Chỉnh sửa</th>
-                            <th>Xóa dịch vụ</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -103,8 +102,7 @@
                                 <td>${service.getCageHeight()}</td>
                                 <c:if test="${service.getServiceStatus() == 'active'}"><td><form action="toggleservice" method="post"><input type="hidden" value="${service.getServiceId()}" name="toggleServiceId"><input type="hidden" value="${service.getServiceStatus()}" name="toggleServiceStatus"><input class="btn btn-outline-success" type="submit" value="Hoạt động"></form></td></c:if>
                                 <c:if test="${service.getServiceStatus() == 'disabled'}"><td><form action="toggleservice" method="post"><input type="hidden" value="${service.getServiceId()}" name="toggleServiceId"><input type="hidden" value="${service.getServiceStatus()}" name="toggleServiceStatus"><input class="btn btn-outline-danger" type="submit" value="Tạm ngưng"></form></td></c:if>
-                                <td><form><input type="hidden" value="${service.getServiceId()}" name="editServiceId"><input class="btn btn-outline-primary" type="submit" name="chinhsua" value="Chỉnh sửa"></form></td>
-                                <td><form ><input type="hidden" value="${service.getServiceId()}" name="deleteServiceId"><input class="btn btn-danger" type="submit" name="chinhsua" value="Xóa"></form></td>
+                                <td><form action="editservice" method="get"><input type="hidden" value="${service.getServiceId()}" name="ServiceId"><input class="btn btn-outline-primary" type="submit" value="Chỉnh sửa"></form></td>
                             </tr>
                         </c:forEach>
                     </tbody>

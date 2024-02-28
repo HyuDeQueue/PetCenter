@@ -5,12 +5,14 @@
  */
 package controller;
 
+import DAO.ServiceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Service;
 
 /**
  *
@@ -31,7 +33,40 @@ public class editservice extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+            request.setCharacterEncoding("UTF-8");
+            
+            ServiceDAO serviceDAO = new ServiceDAO();
+            Service selectedService = serviceDAO.GetService(Integer.parseInt(request.getParameter("selectedService")));
+            
+            String newName = request.getParameter("ServiceName");
+            if(newName == null || newName.trim().isEmpty()) newName = selectedService.getServiceName();
+            
+            int newPrice = -1;
+            if(request.getParameter("ServicePrice") == null || request.getParameter("ServicePrice").trim().isEmpty()) newPrice = selectedService.getServicePrice();
+            else newPrice = Integer.parseInt(request.getParameter("ServicePrice"));
+            
+            float newCageLength = -1;
+            if(request.getParameter("cagelength") == null || request.getParameter("cagelength").trim().isEmpty()) newCageLength = selectedService.getCageLength();
+            else newCageLength = Float.parseFloat(request.getParameter("cagelength"));
+            
+            float newCageWidth = -1;
+            if(request.getParameter("cagewidth") == null || request.getParameter("cagewidth").trim().isEmpty()) newCageWidth = selectedService.getCageWidth();
+            else newCageWidth = Float.parseFloat(request.getParameter("cagewidth"));
+            
+            float newCageHeight = -1;
+            if(request.getParameter("cageheight") == null || request.getParameter("cageheight").trim().isEmpty()) newCageHeight = selectedService.getCageHeight();
+            else newCageHeight = Float.parseFloat(request.getParameter("cageheight"));         
+            
+            Service updateService = new Service();
+            updateService.setServiceId(selectedService.getServiceId());
+            updateService.setServiceName(newName);
+            updateService.setServicePrice(newPrice);
+            updateService.setCageWidth(newCageWidth);
+            updateService.setCageLength(newCageLength);
+            updateService.setCageHeight(newCageHeight);
+            updateService.setServiceStatus(selectedService.getServiceStatus());
+            serviceDAO.UpdateSerice(updateService);
+            
             response.sendRedirect("manageservice");
         }
     }
@@ -48,6 +83,8 @@ public class editservice extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int ServiceId = Integer.parseInt(request.getParameter("ServiceId"));
+        request.setAttribute("selectedServiceId", ServiceId);
         request.getRequestDispatcher("/WEB-INF/view/editservice.jsp").forward(request, response);
     }
 

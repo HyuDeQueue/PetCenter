@@ -100,11 +100,6 @@
     font-weight: bold; /* Make text bold */
 
             }
-            
-         
-
-
-
         </style>
     </head>
     <body>

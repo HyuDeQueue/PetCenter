@@ -79,5 +79,58 @@ public class ServiceDAO extends DBContext{
             return null;
         }
     }
+    
+    public Service GetService(int serviceId){
+        try {
+            String sql = "SELECT [ServiceId],[Service_name],[Service_status],[Service_price],[Cage_Width],[Cage_Length],[Cage_Height]\n"
+                    + "FROM [dbo].[Services]\n"
+                    + "WHERE [ServiceId] = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1,serviceId);
+            ResultSet rs = ps.executeQuery();
+            Service service = null;
+            if(rs.next()){
+                service = new Service();
+                service.setServiceId(rs.getInt("ServiceId"));
+                service.setServiceName(rs.getString("Service_name"));
+                service.setServiceStatus(rs.getString("Service_status"));
+                service.setServicePrice(rs.getInt("Service_price"));
+                service.setCageWidth(rs.getFloat("Cage_Width"));
+                service.setCageLength(rs.getFloat("Cage_Length"));
+                service.setCageHeight(rs.getFloat("Cage_Height"));
+            }
+            rs.close();
+            ps.close();
+            return service;
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public void UpdateSerice(Service service) {
+        try {
+            String sql = "UPDATE [dbo].[Services] \n"
+                    + "SET\n"
+                    + "[Service_name] = ?,\n"
+                    + "[Service_price] = ?,\n"
+                    + "[Cage_Width] = ?,\n"
+                    + "[Cage_Length] = ?,\n"
+                    + "[Cage_Height] = ?\n"
+                    + "WHERE [ServiceId] = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setNString(1, service.getServiceName());
+            ps.setInt(2, service.getServicePrice());
+            ps.setFloat(3, service.getCageWidth());
+            ps.setFloat(4, service.getCageLength());
+            ps.setFloat(5, service.getCageHeight());
+            ps.setInt(6,service.getServiceId());
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 
 }

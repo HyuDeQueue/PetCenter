@@ -143,7 +143,7 @@
                     </div>
                     
                     <div id="profile-pet">
-                        <h4>Danh sách thú cưng của bạn:</h4>
+                        <h4>Danh sách thú cưng:</h4>
                         <table>
                             <tr>
                                 <th>Tên thú cưng</th>
