@@ -17,24 +17,15 @@ public class BookingDetail implements Serializable{
     private int currentPrice;
     private Date CheckinDate;
     private Date CheckoutDate;
-    private String ServiceId;
+    private int ServiceId;
     private int BookingId;
     private int PetId;
 
     public BookingDetail() {
     }
 
-    public BookingDetail(int DetailId, int currentPrice, Date CheckinDate, Date CheckoutDate, String ServiceId, int BookingId, int PetId) {
+    public BookingDetail(int DetailId, int currentPrice, Date CheckinDate, Date CheckoutDate, int ServiceId, int BookingId, int PetId) {
         this.DetailId = DetailId;
-        this.currentPrice = currentPrice;
-        this.CheckinDate = CheckinDate;
-        this.CheckoutDate = CheckoutDate;
-        this.ServiceId = ServiceId;
-        this.BookingId = BookingId;
-        this.PetId = PetId;
-    }
-
-    public BookingDetail(int currentPrice, Date CheckinDate, Date CheckoutDate, String ServiceId, int BookingId, int PetId) {
         this.currentPrice = currentPrice;
         this.CheckinDate = CheckinDate;
         this.CheckoutDate = CheckoutDate;
@@ -75,11 +66,11 @@ public class BookingDetail implements Serializable{
         this.CheckoutDate = CheckoutDate;
     }
 
-    public String getServiceId() {
+    public int getServiceId() {
         return ServiceId;
     }
 
-    public void setServiceId(String ServiceId) {
+    public void setServiceId(int ServiceId) {
         this.ServiceId = ServiceId;
     }
 

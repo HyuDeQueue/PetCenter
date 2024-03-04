@@ -19,6 +19,7 @@ public class Validator {
         if(msg == null || msg.trim().isEmpty()) return "Không khai báo";
         else return msg;
     }
+    
     public boolean checkValidDate(Date checkDate){
         Date nowDate = Date.valueOf(LocalDate.now());
         if(checkDate.before(nowDate)) return false;

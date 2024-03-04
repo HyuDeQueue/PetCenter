@@ -58,11 +58,11 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="hotel">Khách sạn thú cưng</a>
-                            <a class="dropdown-item" href="train">Huấn luyện chó mèo</a>
                             <a class="dropdown-item" href="cattialong">Cắt tỉa lông</a> 
-                            <a class="dropdown-item" href="petchoose">Tư vấn y tế miễn phí</a>
-                            <a class="dropdown-item" href="petchoose">Khám chữa bệnh, tiêm phòng</a>
-                            <a class="dropdown-item" href="petchoose">Dịch vụ spa</a>
+                            <a class="dropdown-item" href="medicalconsultation">Tư vấn y tế miễn phí</a>
+                            <a class="dropdown-item" href="treatment">Khám chữa bệnh, tiêm phòng</a>
+                            <a class="dropdown-item" href="spa">Dịch vụ spa</a>
+                            <a class="dropdown-item" href="samedayservice">Dịch vụ trong ngày</a>
                         </div>
                     </li>
                     <c:if test="${loggedInAccount == null}"><li class="nav-item">
@@ -77,12 +77,13 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="profile">Thông tin cá nhân</a>
                                 <a class="dropdown-item" href="addpet">Thêm thú cưng</a>
-                                <a class="dropdown-item" href="#">Thông tin Booking</a>
+                                <a class="dropdown-item" href="mybooking">Thông tin Booking</a>
+                                <a class="dropdown-item" href="myfeedback">Đoạn hội thoại</a>
                                 <div class="dropdown-divider"></div>
                                 <c:if test="${loggedInAccount.role == 'admin'}">
                                     <a class="dropdown-item" href="managecustomer">Quản lý người dùng</a>
                                     <a class="dropdown-item" href="manageservice">Quản lý dịch vụ</a>
-                                    <a class="dropdown-item" href="#">Quản lý đơn hàng</a>
+                                    <a class="dropdown-item" href="managebooking">Quản lý đơn hàng</a>
                                     <a class="dropdown-item" href="#">Quản lý phản hồi</a>
                                     <div class="dropdown-divider"></div>
                                 </c:if>

@@ -16,22 +16,16 @@ public class Message implements Serializable{
     private int MessageId;
     private String Message;
     private Date MessageDate;
-    private int DetailId;
+    private int BookingId;
 
     public Message() {
     }
 
-    public Message(int MessageId, String Message, Date MessageDate, int DetailId) {
+    public Message(int MessageId, String Message, Date MessageDate, int BookingId) {
         this.MessageId = MessageId;
         this.Message = Message;
         this.MessageDate = MessageDate;
-        this.DetailId = DetailId;
-    }
-
-    public Message(String Message, Date MessageDate, int DetailId) {
-        this.Message = Message;
-        this.MessageDate = MessageDate;
-        this.DetailId = DetailId;
+        this.BookingId = BookingId;
     }
 
     public int getMessageId() {
@@ -58,13 +52,14 @@ public class Message implements Serializable{
         this.MessageDate = MessageDate;
     }
 
-    public int getDetailId() {
-        return DetailId;
+    public int getBookingId() {
+        return BookingId;
     }
 
-    public void setDetailId(int DetailId) {
-        this.DetailId = DetailId;
+    public void setBookingId(int BookingId) {
+        this.BookingId = BookingId;
     }
+
     
     
     

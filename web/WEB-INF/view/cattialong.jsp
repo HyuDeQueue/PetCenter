@@ -111,6 +111,7 @@
             <div id="about_pettie">
                 <h1>Dịch  vụ cắt tỉa thú cưng Pettie</h1>
                 <p style="font-size: 200%;">Pettie cung cấp dịch vụ cắt tỉa lông chuyên nghiệp, đảm bảo sự thoải mái và đáng yêu cho thú cưng của bạn. Đội ngũ giàu kinh nghiệm và tận tâm của chúng tôi cam kết mang đến kết quả tốt nhất, sử dụng sản phẩm chăm sóc da lông cao cấp. Hãy đến với Pettie để thú cưng của bạn luôn trông thật xinh đẹp và khỏe mạnh.</p>
+                <p></p>
             </div>
             
             <div class="cho">
@@ -118,9 +119,9 @@
                 <img src="resource/image/choduoi5kg.jpg" alt="Ảnh con chó" ">
                </div>
                 <div class="description">
-                    <h5>Thú cưng dưới 5kg:</h5>
+                    <h5>Nâng cao sự thoải mái:</h5>
                     <p>Cắt tỉa nhẹ nhàng, giữ lông gọn gàng và thoải mái, phản ánh phong cách thân thiện và dễ thương của chúng.</p>         
-                    <p>200.000đ</p>
+                    <p></p>
                </div>
             </div>
             
@@ -129,9 +130,9 @@
                 <img src="resource/image/duoi10kg.jpg" alt="Ảnh con chó" ">
                </div>
                 <div class="description">
-                    <h5>Thú cưng dưới 10kg:</h5>
-                    <p>Cắt tỉa linh hoạt, tạo kiểu lông thích hợp với hoạt động hàng ngày và phong cách cá nhân của từng con thú.</p>         
-                    <p>250.000đ</p>
+                    <h5>Tạo hình dáng:</h5>
+                    <p>Cắt tỉa lông giúp tạo ra hình dáng và kiểu dáng cho lông thú cưng, làm cho chúng trở nên gọn gàng và hài hòa với ngoại hình tổng thể của chúng.</p>  
+                    <p></p>
                </div>
             </div>
             
@@ -140,9 +141,9 @@
                 <img src="resource/image/duoi15kg.jpg" alt="Ảnh con chó" ">
                </div>
                 <div class="description">
-                    <h5>Thú cưng dưới 15kg:</h5>
-                    <p>Cắt tỉa cẩn thận, tạo kiểu lông bền đẹp và dễ chăm sóc, phù hợp với sức khỏe và tính cách của thú cưng.</p>         
-                    <p>300.000đ</p>
+                    <h5>Phòng tránh bệnh truyền nhiễm:</h5>
+                    <p>Bằng cách giảm bớt lượng lông, vi khuẩn và các vi sinh vật có thể tồn tại trong lớp lông cũng sẽ giảm đi, giúp giảm nguy cơ mắc các bệnh truyền nhiễm cho thú cưng.</p>
+                    <p></p>
                </div>
             </div>
             
@@ -151,9 +152,9 @@
                 <img src="resource/image/duoi20kg.jpg" alt="Ảnh con chó" ">
                </div>
                 <div class="description">
-                    <h5>Thú cưng dưới 20kg:</h5>
-                    <p>Cắt tỉa đa dạng, từ lông ngắn đến dài, tạo kiểu phản ánh cá tính mạnh mẽ và năng động của thú cưng.</p>         
-                    <p>350.000đ</p>
+                    <h5>Dễ dàng vệ sinh:</h5>
+                    <p>Lông cắt tỉa giúp cho việc vệ sinh trở nên dễ dàng hơn, không gây cản trở cho việc tắm và chải lông, giúp cho việc duy trì vệ sinh cho thú cưng dễ dàng hơn..</p>   
+                    <p></p>
                </div>
             </div>
             
@@ -162,17 +163,14 @@
                 <img src="resource/image/sieubeophi.png" alt="Ảnh con chó" ">
                </div>
                 <div class="description">
-                    <h5>Thú cưng trên 20kg:</h5>
-                    <p>Cắt tỉa chuyên sâu, tạo kiểu lông vừa bảo vệ vừa tôn lên vẻ mạnh mẽ và uyển chuyển của thú cưng.</p>         
-                    <p>500.000đ</p>
+                    <h5>Tăng cường sự tự tin:</h5>
+                    <p>Khi thú cưng được cắt tỉa một cách gọn gàng và sạch sẽ, họ thường cảm thấy thoải mái hơn và tự tin hơn trong giao tiếp với con người và các thú cưng khác.</p> 
+                    <p></p>
                </div>
             </div>
             
             <div id="bookbutton">
-                <form action="petchoose" method="post">
-                    <input type="hidden" value="servicebooking" name="booktype">
-                    <input type="submit" value="Book Now" class="btn btn-success" name="Book">
-                </form>
+                <a href="petchoose" class="btn btn-success">Book Now</a>
             </div>
              <div id="foot">
                 <%@include file="footer.jsp" %>

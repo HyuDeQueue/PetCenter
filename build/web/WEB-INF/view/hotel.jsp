@@ -110,10 +110,7 @@
                 </div>
             </div>
             <div id="bookbutton">
-                <form action="petchoose" method="post">
-                    <input type="hidden" value="hotelBooking" name="booktype">
-                    <input type="submit" class="btn btn-info" value="Book Now" />
-                </form>
+                <a href="petchoose" class="btn btn-info">Book now</a>
             </div>
             <div id='foot'><%@include file="footer.jsp" %></div>
         </div>

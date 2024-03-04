@@ -121,5 +121,42 @@ public class PetDAO extends DBContext{
             return false;
         }
     }
+    
+    public void ChangePetStatusToBooking(int PetId){
+        try {
+            String sql="UPDATE [dbo].[Pet]\n"
+                    + "SET [Pet_status] = 'booking'\n"
+                    + "WHERE [Pet_Id] = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, PetId);
+            ps.execute();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(PetDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public ArrayList<Integer> getAllPetByBookingId(int BookingId){
+        try {
+            String sql="SELECT [Pet_Id]\n"
+                    + "FROM [dbo].[Booking_detail]\n"
+                    + "WHERE [Booking_Id] = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, BookingId);
+            ResultSet rs = ps.executeQuery();
+            
+            ArrayList<Integer> allPetIds = new ArrayList<>();
+            while(rs.next()){
+                int petId = rs.getInt("Pet_Id");
+                allPetIds.add(petId);
+            }
+            rs.close();
+            ps.close();
+            return allPetIds;
+        } catch (SQLException ex) {
+            Logger.getLogger(PetDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 
 }

@@ -63,7 +63,7 @@
             <%@include file="about.jsp" %>
             <div id="profile-pet">
                 <h4>Chọn các thú cưng cho booking:</h4>
-                <form id="bookingForm" action="" method="post">
+                <form id="bookingForm" action="petchoose" method="post">
                     <table class="table table-bordered table-hover table-striped">
                         <thead class="thead-dark">
                             <tr>
@@ -102,19 +102,22 @@
                     <div id="selected-pet"></div>
                     <!--<input type="hidden" name="redirectTo" id="redirectUrlInput" value="<%= request.getAttribute("redirectUrl")%>">-->
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="ServiceType1" name="serviceType" class="custom-control-input" value="shorttime" required>
-                        <label class="custom-control-label" for="ServiceType1">Trong ngày</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="serviceType2" name="serviceType" class="custom-control-input" value="shorttime" required>
+                        <input type="radio" id="serviceType2" name="serviceType" class="custom-control-input" value="longtime" required>
                         <label class="custom-control-label" for="serviceType2">Dài ngày</label>
                     </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="ServiceType1" name="serviceType" class="custom-control-input" value="shorttime" required disabled>
+                        <label class="custom-control-label" for="ServiceType1">Trong ngày (Implementing)</label>
+                    </div>
+                    
                     <br>
                     <input type="submit" value="Book" class="btn btn-success" />
                 </form>
             </div>
             <div id="foot"><%@include file="footer.jsp" %></div>
         </div>
+        
+        
         <script>
             function toggleCheckbox(row, event) {
                 if (event.target.type !== 'checkbox') {

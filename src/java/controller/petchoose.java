@@ -6,6 +6,7 @@
 package controller;
 
 import DAO.PetDAO;
+import DAO.ServiceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Accounts;
 import model.Pet;
+import model.Service;
 
 /**
  *
@@ -37,18 +39,7 @@ public class petchoose extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            HttpSession session = request.getSession();
         
-        Accounts owner = (Accounts) session.getAttribute("loggedInAccount");
-        String ownerEmail = owner.getEmail();
-        PetDAO petDAO = new PetDAO();
-        ArrayList<Pet> list_pet = petDAO.getAllPet(ownerEmail);
-        session.setAttribute("list_pet", list_pet);
-        
-        String redirectUrl = request.getParameter("booktype");
-        request.setAttribute("redirectUrl", redirectUrl);
-        
-        request.getRequestDispatcher("/WEB-INF/view/petchoose.jsp").forward(request, response);
         }
     }
 
@@ -64,7 +55,13 @@ public class petchoose extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        Accounts owner = (Accounts) session.getAttribute("loggedInAccount");
+        String ownerEmail = owner.getEmail();
+        PetDAO petDAO = new PetDAO();
+        ArrayList<Pet> list_pet = petDAO.getAllPet(ownerEmail);
+        session.setAttribute("list_pet", list_pet);
+        request.getRequestDispatcher("/WEB-INF/view/petchoose.jsp").forward(request, response);
     }
 
     /**
@@ -78,7 +75,38 @@ public class petchoose extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        
+        String[] petIds = request.getParameterValues("pickpetchose");
+        if(petIds == null) response.sendRedirect("petchoose");
+        int[] petIdsInt = new int[petIds.length];
+        for (int i = 0; i < petIds.length; i++) {
+            petIdsInt[i] = Integer.parseInt(petIds[i]);
+        }
+        HttpSession session = request.getSession();
+        Accounts thisAccount = (Accounts) session.getAttribute("loggedInAccount");
+        String ownerEmail = thisAccount.getEmail();
+        PetDAO petDAO = new PetDAO();
+        ArrayList<Pet> allPet = petDAO.getAllPet(ownerEmail);
+        ArrayList<Pet> selectedPet = new ArrayList<>();
+        
+        for (int id : petIdsInt) {
+            for (Pet pet : allPet) {
+                if (pet.getPetId() == id) {
+                    selectedPet.add(pet);
+                    break;
+                }
+            }
+        }
+//        ServiceDAO serviceDAO = new ServiceDAO();
+//        ArrayList<Service> allService = serviceDAO.GetAllServices();
+//        request.setAttribute("allService", allService);
+        
+        request.setAttribute("pickedPets", selectedPet);
+        String bookingType = request.getParameter("serviceType");
+        if(bookingType.equals("shorttime")) request.getRequestDispatcher("/WEB-INF/view/samedaybooking.jsp").forward(request, response);
+        else if(bookingType.equals("longtime")) request.getRequestDispatcher("/WEB-INF/view/longdaybooking.jsp").forward(request, response);
+        else response.sendRedirect("petchoose");
     }
 
     /**

@@ -96,6 +96,50 @@
         <servlet-name>editservice</servlet-name>
         <servlet-class>controller.editservice</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>samedayservice</servlet-name>
+        <servlet-class>controller.samedayservice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>medicalconsultation</servlet-name>
+        <servlet-class>controller.medicalconsultation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>treatment</servlet-name>
+        <servlet-class>controller.treatment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>spa</servlet-name>
+        <servlet-class>controller.spa</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>book</servlet-name>
+        <servlet-class>controller.book</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>mybooking</servlet-name>
+        <servlet-class>controller.mybooking</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cancelbooking</servlet-name>
+        <servlet-class>controller.cancelbooking</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>managebooking</servlet-name>
+        <servlet-class>controller.managebooking</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>bookingdetail</servlet-name>
+        <servlet-class>controller.bookingdetail</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>proceedbooking</servlet-name>
+        <servlet-class>controller.proceedbooking</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>sendFeedback</servlet-name>
+        <servlet-class>controller.sendFeedback</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
@@ -183,6 +227,50 @@
     <servlet-mapping>
         <servlet-name>editservice</servlet-name>
         <url-pattern>/editservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>samedayservice</servlet-name>
+        <url-pattern>/samedayservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>medicalconsultation</servlet-name>
+        <url-pattern>/medicalconsultation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>treatment</servlet-name>
+        <url-pattern>/treatment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>spa</servlet-name>
+        <url-pattern>/spa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>book</servlet-name>
+        <url-pattern>/book</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>mybooking</servlet-name>
+        <url-pattern>/mybooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cancelbooking</servlet-name>
+        <url-pattern>/cancelbooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>managebooking</servlet-name>
+        <url-pattern>/managebooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>bookingdetail</servlet-name>
+        <url-pattern>/bookingdetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>proceedbooking</servlet-name>
+        <url-pattern>/proceedbooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sendFeedback</servlet-name>
+        <url-pattern>/sendFeedback</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

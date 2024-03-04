@@ -7,7 +7,6 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Windows 10
  */
-public class trainBooking extends HttpServlet {
+public class samedayservice extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,12 +32,7 @@ public class trainBooking extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-             String PetId = request.getParameter("petName");
-            String bookingDateStr = java.time.LocalDate.now().toString();
-            String checkinDateStr = request.getParameter("checkinDate");
-
-            Date bookingDate = java.sql.Date.valueOf(java.time.LocalDate.parse(bookingDateStr));
-            Date checkinDate = java.sql.Date.valueOf(java.time.LocalDate.parse(checkinDateStr)); 
+            request.getRequestDispatcher("/WEB-INF/view/dichvutrongngay.jsp").forward(request, response);
         }
     }
 

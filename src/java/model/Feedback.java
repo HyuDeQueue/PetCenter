@@ -17,21 +17,17 @@ public class Feedback implements Serializable{
     private Date FeedbackDate;
     private String Message;
     private int BookingId;
+    private String ReplyMessage;
 
     public Feedback() {
     }
 
-    public Feedback(int FeedbackId, Date FeedbackDate, String Message, int BookingId) {
+    public Feedback(int FeedbackId, Date FeedbackDate, String Message, int BookingId, String ReplyMessage) {
         this.FeedbackId = FeedbackId;
         this.FeedbackDate = FeedbackDate;
         this.Message = Message;
         this.BookingId = BookingId;
-    }
-
-    public Feedback(Date FeedbackDate, String Message, int BookingId) {
-        this.FeedbackDate = FeedbackDate;
-        this.Message = Message;
-        this.BookingId = BookingId;
+        this.ReplyMessage = ReplyMessage;
     }
 
     public int getFeedbackId() {
@@ -65,6 +61,14 @@ public class Feedback implements Serializable{
     public void setBookingId(int BookingId) {
         this.BookingId = BookingId;
     }
+
+    public String getReplyMessage() {
+        return ReplyMessage;
+    }
+
+    public void setReplyMessage(String ReplyMessage) {
+        this.ReplyMessage = ReplyMessage;
+    }
     
-    
+   
 }

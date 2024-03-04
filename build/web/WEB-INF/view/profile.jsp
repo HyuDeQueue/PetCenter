@@ -174,13 +174,23 @@
                                             <td>
                                                 <c:if test="${pet.petStatus == 'active'}"><form action="togglepet" method="post" class="pet-form"><input type="hidden" name="petId" value="${pet.petId}"><input type="hidden" name="petStatus" value="${pet.petStatus}"><button type="submit" class="btn btn-success">Hoạt động</button></form></c:if>
                                                 <c:if test="${pet.petStatus == 'disable'}"><form action="togglepet" method="post" class="pet-form"><input type="hidden" name="petId" value="${pet.petId}"><input type="hidden" name="petStatus" value="${pet.petStatus}"><button type="submit" class="btn btn-secondary">Nghỉ ngơi</button></form></c:if>
+                                                <c:if test="${pet.petStatus == 'booking'}"><button type="button" class="btn btn-warning btn-sm" disabled>Đang trong đơn</button></c:if>
                                             </td>
-                                            <td><form action="editpet" method="post" class="pet-form"><input type="hidden" name="petId" value="${pet.petId}"><button type="submit" class="btn btn-warning">Chỉnh sửa</button></form></td>
-                                            <td><form action="deletepet" method="post" class="pet-form"><input type="hidden" name="petId" value="${pet.petId}"><button type="submit" class="btn btn-danger" onclick="return window.confirm('Bạn có chắc muốn xóa thú cưng này?')">Xóa thú cưng</button></form></td>
+                                            <td>
+                                                <c:if test="${pet.petStatus != 'booking'}"><form action="editpet" method="post" class="pet-form"><input type="hidden" name="petId" value="${pet.petId}"><button type="submit" class="btn btn-warning">Chỉnh sửa</button></form></c:if>
+                                                <c:if test="${pet.petStatus == 'booking'}">Chưa thể chỉnh sửa</c:if>
+                                            </td>
+                                            <td>
+                                                <c:if test="${pet.petStatus != 'booking'}"><form action="deletepet" method="post" class="pet-form"><input type="hidden" name="petId" value="${pet.petId}"><button type="submit" class="btn btn-danger" onclick="return window.confirm('Bạn có chắc muốn xóa thú cưng này?')">Xóa thú cưng</button></form></c:if>
+                                                <c:if test="${pet.petStatus == 'booking'}">Chưa thể xóa</c:if>
+                                            </td>
                                         </tr>
                                     </c:if>
                                 </c:forEach>
                             </c:if>
+                                        <tr>
+                                            <td colspan="11"><a class="btn btn-block btn-success btn-lg" href="addpet">Thêm thú cưng</a></td>
+                                        </tr>
                         </table>
                     </div>
                 </div>

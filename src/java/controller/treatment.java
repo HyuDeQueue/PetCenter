@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Windows 10
  */
-public class train extends HttpServlet {
+public class treatment extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,9 +32,7 @@ public class train extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String plan = request.getParameter("plan");
-            request.setAttribute("plan", plan);
-            request.getRequestDispatcher("/WEB-INF/view/trainbooking.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/view/khamchuabenh.jsp").forward(request, response);
         }
     }
 
@@ -50,8 +48,7 @@ public class train extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        request.getRequestDispatcher("/WEB-INF/view/train.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
