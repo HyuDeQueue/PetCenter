@@ -160,7 +160,7 @@
                                     <td>
                                         <form action="petdetail" method="get">
                                             <input type="hidden" value="${accounts.email}" name="email">
-                                            <button type="submit" class="btn btn-outline-primary detail-button" data-email="${accounts.email}">Xem chi tiết</button>
+                                            <button type="button" class="btn btn-outline-primary detail-button" data-email="${accounts.email}">Xem chi tiết</button>
                                         </form>
                                     </td>
                                 </tr>            
@@ -252,6 +252,22 @@
                     });
                 });
             });
+///////////////////////
+            document.addEventListener("DOMContentLoaded", function () {
+    const detailButtons = document.querySelectorAll(".detail-button");
+    detailButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const email = button.dataset.email; // Lấy giá trị email từ trường data-email của nút
+            const url = "petdetail?email=" + email; // Tạo URL cho trang petdetail với tham số email
+            const options = "width=800,height=600";
+
+            window.open(url, "popup", options); // Mở cửa sổ mới với URL và tùy chọn đã chỉ định
+        });
+    });
+});
+
+
+
 
         </script>
     </body>

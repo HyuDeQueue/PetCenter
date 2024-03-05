@@ -140,6 +140,22 @@
         <servlet-name>sendFeedback</servlet-name>
         <servlet-class>controller.sendFeedback</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>myfeedback</servlet-name>
+        <servlet-class>controller.myfeedback</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>managefeedback</servlet-name>
+        <servlet-class>controller.managefeedback</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>sendReply</servlet-name>
+        <servlet-class>controller.sendReply</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updatepet</servlet-name>
+        <servlet-class>controller.updatepet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
@@ -271,6 +287,22 @@
     <servlet-mapping>
         <servlet-name>sendFeedback</servlet-name>
         <url-pattern>/sendFeedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>myfeedback</servlet-name>
+        <url-pattern>/myfeedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>managefeedback</servlet-name>
+        <url-pattern>/managefeedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sendReply</servlet-name>
+        <url-pattern>/sendReply</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updatepet</servlet-name>
+        <url-pattern>/updatepet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

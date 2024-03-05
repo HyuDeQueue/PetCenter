@@ -177,7 +177,7 @@
                                                 <c:if test="${pet.petStatus == 'booking'}"><button type="button" class="btn btn-warning btn-sm" disabled>Đang trong đơn</button></c:if>
                                             </td>
                                             <td>
-                                                <c:if test="${pet.petStatus != 'booking'}"><form action="editpet" method="post" class="pet-form"><input type="hidden" name="petId" value="${pet.petId}"><button type="submit" class="btn btn-warning">Chỉnh sửa</button></form></c:if>
+                                                <c:if test="${pet.petStatus != 'booking'}"><form action="updatepet" method="get" class="pet-form"><input type="hidden" name="petId" value="${pet.petId}"><button type="submit" class="btn btn-warning">Chỉnh sửa</button></form></c:if>
                                                 <c:if test="${pet.petStatus == 'booking'}">Chưa thể chỉnh sửa</c:if>
                                             </td>
                                             <td>

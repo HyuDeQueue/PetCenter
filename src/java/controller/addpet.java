@@ -41,7 +41,7 @@ public class addpet extends HttpServlet {
             Validator valid = new Validator();
             String ownerEmail = request.getParameter("ownerEmail");
             String petName = request.getParameter("petname");
-            String pexSex = request.getParameter("petSex");
+            String petSex = request.getParameter("petSex");
             String petType = request.getParameter("pettype");
             double petWeight = Double.parseDouble(request.getParameter("petweight"));
             double petHeight = Double.parseDouble(request.getParameter("petheight"));
@@ -55,7 +55,7 @@ public class addpet extends HttpServlet {
                 return;
             }
             
-            Pet newPet = new Pet(ownerEmail, petName, pexSex, petType, petWeight, petHeight, petLength, petStatus, petBehavior, petFavFood);
+            Pet newPet = new Pet(ownerEmail, petName, petSex, petType, petWeight, petHeight, petLength, petStatus, petBehavior, petFavFood);
             PetDAO petDao = new PetDAO();
             petDao.AddPet(newPet);
             ArrayList<Pet> pet_list = petDao.getAllPet(ownerEmail);

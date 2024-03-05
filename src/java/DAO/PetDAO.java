@@ -159,4 +159,67 @@ public class PetDAO extends DBContext{
         }
     }
 
+    public Pet getPetById(int petId) {
+        try {
+            String sql="SELECT [Pet_Id],[Pet_name],[Pet_type],[Pet_sex],[Pet_weight],[Pet_height],[Pet_length],[Pet_behavior],[Pet_favorite_food],[Email]\n"
+                    + "FROM [dbo].[Pet]\n"
+                    + "WHERE [Pet_Id] = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, petId);
+            ResultSet rs = ps.executeQuery();
+            Pet getPet = new Pet();
+            if(rs.next()){
+                
+                getPet.setPetId(rs.getInt("Pet_Id"));
+                getPet.setOwnerEmail(rs.getString("Email"));
+                getPet.setPetName(rs.getNString("Pet_name"));
+                getPet.setPetSex(rs.getNString("Pet_sex"));
+                getPet.setPetType(rs.getNString("Pet_type"));
+                getPet.setPetWeight(rs.getDouble("Pet_weight"));
+                getPet.setPetHeight(rs.getDouble("Pet_height"));
+                getPet.setPetLength(rs.getDouble("Pet_length"));
+                getPet.setPetBehavior(rs.getNString("Pet_behavior"));
+                getPet.setPetFavoriteFood(rs.getNString("Pet_favorite_food"));
+            }
+            rs.close();
+            ps.close();
+            return getPet;
+        } catch (SQLException ex) {
+            Logger.getLogger(PetDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public void updatePet(Pet pet) {
+        try {
+            String sql = "UPDATE [dbo].[Pet]\n"
+                    + "SET\n"
+                    + " [Pet_name] = ?\n"
+                    + ",[Pet_type] = ?\n"
+                    + ",[Pet_sex] = ?\n"
+                    + ",[Pet_weight] = ?\n"
+                    + ",[Pet_height] = ?\n"
+                    + ",[Pet_length] = ?\n"
+                    + ",[Pet_behavior] = ?\n"
+                    + ",[Pet_favorite_food] = ?\n"
+                    + "WHERE [Pet_Id] = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setNString(1, pet.getPetName());
+            ps.setNString(2, pet.getPetType());
+            ps.setNString(3, pet.getPetSex());
+            ps.setDouble(4, pet.getPetWeight());
+            ps.setDouble(5, pet.getPetHeight());
+            ps.setDouble(6, pet.getPetLength());
+            ps.setNString(7, pet.getPetBehavior());
+            ps.setNString(8, pet.getPetFavoriteFood());
+            ps.setInt(9, pet.getPetId());
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(PetDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
+
 }

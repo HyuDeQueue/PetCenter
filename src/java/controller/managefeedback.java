@@ -5,23 +5,18 @@
  */
 package controller;
 
-import DAO.AccountsDAO;
-import DAO.PetDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Pet;
 
 /**
  *
- * @author LG Gram
+ * @author Windows 10
  */
-public class petdetail extends HttpServlet {
+public class managefeedback extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,15 +32,7 @@ public class petdetail extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet petdetail</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet petdetail at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            request.getRequestDispatcher("/WEB-INF/view/managefeedback.jsp").forward(request, response);
         }
     }
 
@@ -61,12 +48,7 @@ public class petdetail extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String email = request.getParameter("email");
-            PetDAO petDAO = new PetDAO();
-            ArrayList<Pet> thatUserPet = petDAO.getAllPet(email);
-            request.setAttribute("thatUserPet", thatUserPet);
-            request.setAttribute("email", email);
-            request.getRequestDispatcher("WEB-INF/view/petdetail.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -80,8 +62,7 @@ public class petdetail extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                request.getRequestDispatcher("WEB-INF/view/petdetail.jsp").forward(request, response);
-
+        processRequest(request, response);
     }
 
     /**

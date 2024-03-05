@@ -3,27 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/bookingdetail.jsp</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/managebooking.jsp</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/samedaybooking.jsp</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/hotel.jsp</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/spa.jsp</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/tuvanyte.jsp</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/longdaybooking.jsp</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/mybooking.jsp</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/khamchuabenh.jsp</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/petdetail.jsp</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/src/java/controller/cancelbooking.java</file>
             <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/managecustomer.jsp</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/dichvutrongngay.jsp</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/src/java/controller/addpet.java</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/src/java/controller/proceedbooking.java</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/header.jsp</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/src/java/controller/sendFeedback.java</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/profile.jsp</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/src/java/model/Accounts.java</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/src/java/controller/bookingdetail.java</file>
-            <file>file:/D:/java%20cua%20t/PetCenter/src/java/DAO/BookingDAO.java</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/src/java/controller/petdetail.java</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/hotel.jsp</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/src/java/DAO/PetDAO.java</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/web/WEB-INF/view/petdetail.jsp</file>
+            <file>file:/D:/java%20cua%20t/PetCenter/src/java/model/Pet.java</file>
         </group>
     </open-files>
 </project-private>

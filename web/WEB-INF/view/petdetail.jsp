@@ -8,15 +8,20 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <style>
-            body {
+            body{
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
+                align-content: center;
                 align-items: center;
-                font-family: Arial, sans-serif;
+            }
+            #website-width{
+                width: 70%;
+                background-color: #fff0de;
             }
 
             .addpet-form {
-                width: 70%;
+                width: 100%;
                 max-width: 800px;
                 padding: 20px;
                 overflow: auto;
@@ -67,17 +72,12 @@
         <div id="website-width">
             <%@include file="about.jsp" %>
             <div class="addpet-form">
-                <h1>Thông tin về thú cưng của bạn:</h1>
-                <c:set var="email" value="${param.email}" />
-                <c:choose>
-                    <c:when test="${email!=null && !email.isEmpty()}">
-                        <c:set var="pets" value="${petDao.getAllPet(email)}"/>
-                        <c:out value="${pets}" />
+                <h1>Thông tin về thú cưng của tài khoản:</h1>
+                <%
+                    String email = (String) request.getAttribute("email");
+                %>
                         <c:choose>
-                            <c:when test="${empty pets}">
-                                <p>Không có thông tin về thú cưng nào được tìm thấy với email ${param.email}</p>
-                            </c:when>
-                            <c:when test="${not empty pets}">
+                            <c:when test="${not empty thatUserPet}">
                                 <table>
                                     <tr>
                                         <th>Tên</th>
@@ -88,10 +88,11 @@
                                         <th>Chiều Rộng</th>
                                         <th>Tính Cách</th>
                                         <th>Đồ Ăn Ưa Thích</th>
+                                        <th>Trạng th</th>
                                     </tr>
-                                    <c:forEach var="pet" items="${pets}">
+                                    <c:forEach var="pet" items="${thatUserPet}">
                                         <tr>
-                                            <td>${pet.petname}</td>
+                                            <td>${pet.petName}</td>
                                             <td>${pet.petSex}</td>
                                             <td>${pet.petType}</td>
                                             <td>${pet.petWeight}</td>
@@ -104,55 +105,11 @@
                                     </c:forEach>
                                 </table>
                             </c:when>
-                        </c:choose>
-
-                    </c:when>
-                    <c:otherwise><p>Không có thông tin về thú cưng nào được tìm thấy với email ${param.email}.</p>
+                    <c:otherwise>
+                        <p>Không có thông tin về thú cưng nào được tìm thấy với email ${email}.</p>
                     </c:otherwise>
                 </c:choose>
             </div>
-
-            <%/*
-            // Nhận email từ yêu cầu HTTP
-            String email = request.getParameter("email");
-
-            // Kiểm tra xem email có tồn tại không
-            if (email != null && !email.isEmpty()) {
-                // Tạo một đối tượng PetDAO
-                PetDAO petDAO = new PetDAO();
-        
-                // Lấy danh sách thú cưng của người dùng dựa trên email
-                ArrayList<Pet> pets = petDAO.getAllPet(email);
-
-                // Hiển thị thông tin về thú cưng
-                out.println("<div class=\"addpet-form\">");
-                out.println("<h1>Thông tin về thú cưng của bạn:</h1>");
-                if (pets.isEmpty()) {
-                    out.println("<p>Không có thông tin về thú cưng nào được tìm thấy với email " + email + ".</p>");
-                } else {
-                    out.println("<table>");
-                    out.println("<tr><th>Tên</th><th>Giới Tính</th><th>Loại</th><th>Cân Nặng</th><th>Chiều Cao</th><th>Chiều Rộng</th><th>Tính Cách</th><th>Đồ Ăn Ưa Thích</th></tr>");
-                    for (Pet pet : pets) {
-                        out.println("<tr>");
-                        out.println("<td>" + pet.getPetName() + "</td>");
-                        out.println("<td>" + pet.getPetSex()+ "</td>");
-                        out.println("<td>" + pet.getPetType() + "</td>");
-                        out.println("<td>" + pet.getPetWeight()+ "</td>");
-                        out.println("<td>" + pet.getPetHeight()+ "</td>");
-                        out.println("<td>" + pet.getPetLength()+ "</td>");
-                        out.println("<td>" + pet.getPetBehavior()+ "</td>");
-                        out.println("<td>" + pet.getPetFavoriteFood()+ "</td>");
-                        out.println("</tr>");
-                    }
-                    out.println("</table>");
-                }
-                out.println("</div>");
-            } else {
-                out.println("<p>Bạn hiện không có thú cưng nào hết.</p>");
-            }
-                 */
-            %>
-
             <div id="foot"><%@include file="footer.jsp" %></div>
         </div>
     </body>
