@@ -55,7 +55,7 @@ public class AccountsDAO extends DBContext{
     
     public Accounts SigninCheck(Accounts accounts) {
         try {
-            String sql = "SELECT [First_Name], [Password], [Role], [Phone], [Last_name], [Account_status], [Email], [User_sex] "
+            String sql = "SELECT [First_Name], [Password], [Role], [Phone], [Last_name], [Account_status], [Email], [User_sex], [blocked_reason] "
                     + "FROM [dbo].[Account] "
                     + "WHERE [Email] = ?";
             PreparedStatement pstmt = connection.prepareStatement(sql);
@@ -76,6 +76,7 @@ public class AccountsDAO extends DBContext{
                     acc.setAccountStatus(rs.getNString("Account_status")); // Đặt trạng thái tài khoản
                     acc.setPhone(rs.getString("Phone")); // Đặt số điện thoại của người dùng
                     acc.setSex(rs.getNString("User_sex")); // Đặt giới tính của người dùng
+                    acc.setBlockedReason(rs.getNString("blocked_reason"));
                     // Có thể đặt các thuộc tính khác của tài khoản ở đây
 
                     rs.close();
@@ -114,32 +115,6 @@ public class AccountsDAO extends DBContext{
             Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-//    public ArrayList<Accounts> getAllAccounts(){
-//        try {
-//            String sql = "SELECT [Email],[First_Name],[Last_name],[User_sex],[Phone],[Role],[Account_status]\n"
-//                    + "FROM [dbo].[Account]";
-//            PreparedStatement ps = connection.prepareStatement(sql);
-//            ResultSet rs = ps.executeQuery();
-//            ArrayList<Accounts> AccountList = new ArrayList<>();
-//            while(rs.next()){
-//                Accounts account = new Accounts();
-//                account.setEmail(rs.getString("Email")); 
-//                account.setFirstName(rs.getString("First_Name")); 
-//                account.setLastName(rs.getString("Last_name")); 
-//                account.setSex(rs.getString("User_sex")); 
-//                account.setPhone(rs.getString("Phone"));
-//                account.setRole(rs.getString("Role"));
-//                account.setAccountStatus(rs.getString("Account_status"));
-//                AccountList.add(account);
-//            }
-//            rs.close();
-//            ps.close();
-//            return AccountList;
-//        } catch (SQLException ex) {
-//            Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
-//            return null;
-//        }
-//    }
     public ArrayList<Accounts> getAllAccounts(){
         try {
             String sql = "SELECT [First_Name],[Last_name],[User_sex],[Phone],[Email],[Role],[Account_status]\n"
@@ -226,14 +201,33 @@ public class AccountsDAO extends DBContext{
             return null;
         }
     }
-    public void toggleUser(String status, String email){
+    public void toggleUserDisabled(String status, String email, String reason){
         try {
-            String sql="UPDATE [dbo].[Account]\n"
-                    + "SET [Account_status] = ?\n"
+            String sql = "UPDATE [dbo].[Account]\n"
+                    + "SET [Account_status] = ?,\n"
+                    + "[blocked_reason] = ?\n"
                     + "WHERE [Email] = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, status);
-            ps.setString(2, email);
+            ps.setString(2, reason);
+            ps.setString(3, email);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountsDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void toggleUserActive(String status, String email){
+        try {
+            String sql="UPDATE [dbo].[Account]\n"
+                    + "SET [Account_status] = ?,\n"
+                    + "[blocked_reason] = ?\n"
+                    + "WHERE [Email] = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, status);
+            ps.setString(2, "");
+            ps.setString(3, email);
             ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {

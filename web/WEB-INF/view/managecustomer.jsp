@@ -143,10 +143,10 @@
                                     <td>${accounts.role}</td>
                                     <td id="AccountStatus">
                                         <c:if test="${accounts.accountStatus == 'active'}">
-                                            <form action="toggleuser" method="post">
+                                            <form action="toggleuser" method="post" onsubmit="return confirmAndSubmit(this);">
                                                 <input type="hidden" value="${accounts.email}" name="email">
                                                 <input type="hidden" value="${accounts.accountStatus}" name="status">
-                                                <button value="active" type="submit" class="btn btn-success" onclick="return window.confirm('Bạn có chắc muốn khóa tài khoản người này?')">Active</button>
+                                                <button type="submit" class="btn btn-success">Active</button>
                                             </form>
                                         </c:if>
                                         <c:if test="${accounts.accountStatus == 'blocked'}">
@@ -174,21 +174,6 @@
             </div>
 
         </div>
-
-
-        <!--    <script>
-        // Bắt sự kiện khi người dùng click vào nút "Xem chi tiết"
-        document.addEventListener("DOMContentLoaded", function() {
-            const detailButtons = document.querySelectorAll(".detail-button");
-        
-            detailButtons.forEach(button => {
-                button.addEventListener("click", function() {
-                    const email = button.dataset.email; // Lấy giá trị email từ trường data-email của nút
-                    window.location.href = "petdetail?email=" + email; // Chuyển hướng đến trang "petdetail" với tham số email
-                });
-            });
-        });
-            </script>-->
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const nameInput = document.getElementById("nameInput");
@@ -254,18 +239,36 @@
             });
 ///////////////////////
             document.addEventListener("DOMContentLoaded", function () {
-    const detailButtons = document.querySelectorAll(".detail-button");
-    detailButtons.forEach(button => {
-        button.addEventListener("click", function () {
-            const email = button.dataset.email; // Lấy giá trị email từ trường data-email của nút
-            const url = "petdetail?email=" + email; // Tạo URL cho trang petdetail với tham số email
-            const options = "width=800,height=600";
+                const detailButtons = document.querySelectorAll(".detail-button");
+                detailButtons.forEach(button => {
+                    button.addEventListener("click", function () {
+                        const email = button.dataset.email; // Lấy giá trị email từ trường data-email của nút
+                        const url = "petdetail?email=" + email; // Tạo URL cho trang petdetail với tham số email
+                        const options = "width=800,height=600";
 
-            window.open(url, "popup", options); // Mở cửa sổ mới với URL và tùy chọn đã chỉ định
-        });
-    });
-});
+                        window.open(url, "popup", options); // Mở cửa sổ mới với URL và tùy chọn đã chỉ định
+                    });
+                });
+            });
 
+            function confirmAndSubmit(form) {
+                var reason = prompt("Vui lòng nhập lý do khóa tài khoản:");
+                if (reason !== null && reason.trim() !== "") {
+                    // Create a hidden input element for the reason
+                    var reasonInput = document.createElement('input');
+                    reasonInput.type = 'hidden';
+                    reasonInput.name = 'reason';
+                    reasonInput.value = reason;
+
+                    // Append the reason input field to the form
+                    form.appendChild(reasonInput);
+
+                    return true; // Allow form submission
+                } else {
+                    alert("Vui lòng nhập lý do khóa tài khoản.");
+                    return false; // Prevent form submission if reason is empty or null
+                }
+            }
 
 
 

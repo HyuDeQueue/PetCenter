@@ -20,6 +20,11 @@ public class BookingDetail implements Serializable{
     private int ServiceId;
     private int BookingId;
     private int PetId;
+    
+    private Date BookingDate;
+    private String petName;
+    private String serviceName;
+    
 
     public BookingDetail() {
     }
@@ -33,6 +38,22 @@ public class BookingDetail implements Serializable{
         this.BookingId = BookingId;
         this.PetId = PetId;
     }
+
+    public BookingDetail(int DetailId, int currentPrice, Date CheckinDate, Date CheckoutDate, int ServiceId, int BookingId, int PetId, Date BookingDate, String petName, String serviceName) {
+        this.DetailId = DetailId;
+        this.currentPrice = currentPrice;
+        this.CheckinDate = CheckinDate;
+        this.CheckoutDate = CheckoutDate;
+        this.ServiceId = ServiceId;
+        this.BookingId = BookingId;
+        this.PetId = PetId;
+        this.BookingDate = BookingDate;
+        this.petName = petName;
+        this.serviceName = serviceName;
+    }
+
+    
+    
 
     public int getDetailId() {
         return DetailId;
@@ -88,6 +109,31 @@ public class BookingDetail implements Serializable{
 
     public void setPetId(int PetId) {
         this.PetId = PetId;
+    }
+
+    public Date getBookingDate() {
+        return BookingDate;
+    }
+
+    public void setBookingDate(Date BookingDate) {
+        this.BookingDate = BookingDate;
+    }
+
+
+    public String getPetName() {
+        return petName;
+    }
+
+    public void setPetName(String petName) {
+        this.petName = petName;
+    }
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
     
     

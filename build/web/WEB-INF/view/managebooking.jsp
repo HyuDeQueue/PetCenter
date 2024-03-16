@@ -84,7 +84,11 @@
                                             <td>${Booking.getEmail()}</td>
                                             <td>${Booking.getBookingDate()}</td>
                                             <td>${Booking.status}</td>
-                                            <td><form><input type="submit" class="btn btn-info" value="Chi tiết"></form></td>
+                                            <td>
+                                                <form>
+                                                    <input type="button" data-bookingid="${Booking.getBookingId()}" class="btn btn-info" value="Chi tiết" onclick="openPopup(this)">
+                                                </form>
+                                            </td>
                                             <td><form action="proceedbooking" method="post"><input type="hidden" name="status" value="confirmed"><input type="hidden" name="bookingId" value="${Booking.getBookingId()}"><input type="submit" class="btn btn-success" value="Xác nhận đơn"></form></td>
                                             <td><form><input type="submit" class="btn btn-warning" value="Chỉnh sửa đơn"></form></td>
                                             <td><form action="cancelbooking" method="post"><input type="hidden" name="userEmail" value="${loggedInAccount.email}"><c:if test="${Booking.getBookingId() != null}"><input type="hidden" name="bookingId" value="${Booking.getBookingId()}"></c:if><input type="submit" class="btn btn-danger" value="Hủy đơn"></form></td>
@@ -119,7 +123,11 @@
                                             <td>${Booking.getEmail()}</td>
                                             <td>${Booking.getBookingDate()}</td>
                                             <td>${Booking.status}</td>
-                                            <td><form><input type="submit" class="btn btn-info" value="Chi tiết"></form></td>
+                                            <td>
+                                                <form>
+                                                    <input type="button" data-bookingid="${Booking.getBookingId()}" class="btn btn-info" value="Chi tiết" onclick="openPopup(this)">
+                                                </form>
+                                            </td>
                                             <td><form action="proceedbooking" method="post"><input type="hidden" name="status" value="checkedin"><input type="hidden" name="bookingId" value="${Booking.getBookingId()}"><input type="submit" class="btn btn-success" value="Đã checkin"></form></td>
                                             <td><form action="cancelbooking" method="post"><input type="hidden" name="userEmail" value="${loggedInAccount.email}"><c:if test="${Booking.getBookingId() != null}"><input type="hidden" name="bookingId" value="${Booking.getBookingId()}"></c:if><input type="submit" class="btn btn-danger" value="Hủy đơn"></form></td>
                                             </tr>
@@ -151,7 +159,11 @@
                                             <td>${Booking.getEmail()}</td>
                                             <td>${Booking.getBookingDate()}</td>
                                             <td>${Booking.status}</td>
-                                            <td><form><input type="submit" class="btn btn-info" value="Chi tiết"></form></td>
+                                            <td>
+                                                <form>
+                                                    <input type="button" data-bookingid="${Booking.getBookingId()}" class="btn btn-info" value="Chi tiết" onclick="openPopup(this)">
+                                                </form>
+                                            </td>
                                             <td><form action="proceedbooking" method="post"><input type="hidden" name="status" value="finished"><input type="hidden" name="bookingId" value="${Booking.getBookingId()}"><input type="submit" class="btn btn-success" value="Hoàn thành"></form></td>
                                         </tr>
                                     </c:if>
@@ -170,7 +182,6 @@
                                 <td>Ngày booking</td>
                                 <td>Trạng thái</td>
                                 <td>Chi tiết</td>
-                                <td>Feedback</td>
                             </tr>
                         </thead>
                         <c:if test="${allBooking != null}">
@@ -182,8 +193,11 @@
                                             <td>${Booking.getEmail()}</td>
                                             <td>${Booking.getBookingDate()}</td>
                                             <td>${Booking.status}</td>
-                                            <td><form><input type="submit" class="btn btn-info" value="Chi tiết"></form></td>
-                                            <td><input type="button" class="btn btn-warning" value="Nhận xét"></td>
+                                            <td>
+                                                <form>
+                                                    <input type="button" data-bookingid="${Booking.getBookingId()}" class="btn btn-info" value="Chi tiết" onclick="openPopup(this)">
+                                                </form>
+                                            </td>
                                         </tr>
                                     </c:if>
                                 </c:forEach>
@@ -193,10 +207,11 @@
                 </div>
                 <div id="cancelled">
                     <h3>Đơn đã bị hủy</h3>
-                    <table class="table table-sm table-hover table-striped">
+                    <table class="table table-sm table-hover table-striped table-bordered">
                         <thead>
                             <tr>
-                                <td>#</td>
+                                <td>BookingId</td>
+                                <td>Email</td>
                                 <td>Ngày booking</td>
                                 <td>Trạng thái</td>
                                 <td>Chi tiết</td>
@@ -207,10 +222,15 @@
                                 <c:forEach var="Booking" items="${allBooking}" varStatus="loop">
                                     <c:if test="${Booking.status == 'cancelled'}">
                                         <tr>
-                                            <td>${loop.index + 1}</td>
+                                            <td>${Booking.getBookingId()}</td>
+                                            <td>${Booking.getEmail()}</td>
                                             <td>${Booking.getBookingDate()}</td>
                                             <td>${Booking.status}</td>
-                                            <td><form><input type="submit" class="btn btn-info" value="Chi tiết"></form></td>
+                                            <td>
+                                                <form>
+                                                    <input type="button" data-bookingid="${Booking.getBookingId()}" class="btn btn-info" value="Chi tiết" onclick="openPopup(this)">
+                                                </form>
+                                            </td>
                                         </tr>
                                     </c:if>
                                 </c:forEach>
@@ -221,5 +241,23 @@
             </div>
             <div id='foot'><%@include file="footer.jsp" %></div>
         </div>
+        <script>
+            function openPopup(button) {
+        // Lấy bookingId từ attribute 'data-bookingid' của button
+        var bookingId = button.getAttribute('data-bookingid');
+
+        // URL của trang servlet bookingdetail
+        var url = "bookingdetail?bookingId=" + bookingId;
+
+        // Các thuộc tính của cửa sổ popup
+        var width = 800;
+        var height = 600;
+        var left = (screen.width - width) / 2;
+        var top = (screen.height - height) / 2;
+
+        // Mở cửa sổ popup
+        window.open(url, "_blank", "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top);
+    }
+        </script>
     </body>
 </html>

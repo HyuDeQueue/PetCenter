@@ -35,13 +35,18 @@ public class toggleuser extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            request.setCharacterEncoding("UTF-8");
             /* TODO output your page here. You may use following sample code. */
 //            HttpSession session = request.getSession();
             String email = request.getParameter("email");
             String currentStatus = request.getParameter("status");
             AccountsDAO accountsDAO = new AccountsDAO();
-            if(currentStatus.equals("active")) accountsDAO.toggleUser("blocked", email);
-            if(currentStatus.equals("blocked")) accountsDAO.toggleUser("active", email);
+            if(currentStatus.equals("active")) {
+                String reason = request.getParameter("reason");
+                if(reason == null || reason.trim().isEmpty()) reason = "No justifiable reason";
+                accountsDAO.toggleUserDisabled("blocked", email, reason);
+            }
+            if(currentStatus.equals("blocked")) accountsDAO.toggleUserActive("active", email);
             HttpSession session = request.getSession();
             ArrayList<Accounts> allAccounts = accountsDAO.getAllAccounts();
             session.setAttribute("list_accounts", allAccounts);

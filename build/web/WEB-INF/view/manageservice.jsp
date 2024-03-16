@@ -75,49 +75,51 @@
             <div id="manage-board">
                 <div>
                     <%
-                    ServiceDAO serviceDAO = new ServiceDAO();
-                    ArrayList<Service> service_list = serviceDAO.GetAllServices();
-                    session.setAttribute("list_service", service_list);
-                %>
-                <table class="table table-bordered table-hover table-sm">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Tên dịch vụ</th>
-                            <th>Giá tiền dịch vụ</th>
-                            <th>Loại dịch vụ</th>
-                            <th>Chiều dài lồng(optional)</th>
-                            <th>Chiều rộng lồng(optional)</th>
-                            <th>Chiều cao lồng(optional)</th>
-                            <th>Trạng thái</th>
-                            <th>Chỉnh sửa</th>
-                        </tr>
-                    </thead>
-                    <tbody id="service-body">
-                        <c:forEach var="service" items="${list_service}">
+                        ServiceDAO serviceDAO = new ServiceDAO();
+                        ArrayList<Service> service_list = serviceDAO.GetAllServices();
+                        session.setAttribute("list_service", service_list);
+                    %>
+                    <table class="table table-bordered table-hover table-sm">
+                        <thead>
                             <tr>
-                                <td>${service.getServiceId()}</td>
-                                <td>${service.getServiceName()}</td>
-                                <td>${service.getServicePrice()}đ</td>
-                                <c:if test="${service.getServiceType() == 'shorttime'}"><td>Trong ngày</td></c:if>
-                                <c:if test="${service.getServiceType() == 'longtime'}"><td>Dài ngày</td></c:if>
-                                <td>${service.getCageLength()}</td>
-                                <td>${service.getCageWidth()}</td>
-                                <td>${service.getCageHeight()}</td>
-                                <c:if test="${service.getServiceStatus() == 'active'}"><td><form action="toggleservice" method="post"><input type="hidden" value="${service.getServiceId()}" name="toggleServiceId"><input type="hidden" value="${service.getServiceStatus()}" name="toggleServiceStatus"><input class="btn btn-outline-success" type="submit" value="Hoạt động"></form></td></c:if>
-                                <c:if test="${service.getServiceStatus() == 'disabled'}"><td><form action="toggleservice" method="post"><input type="hidden" value="${service.getServiceId()}" name="toggleServiceId"><input type="hidden" value="${service.getServiceStatus()}" name="toggleServiceStatus"><input class="btn btn-outline-danger" type="submit" value="Tạm ngưng"></form></td></c:if>
-                                <td><form action="editservice" method="get"><input type="hidden" value="${service.getServiceId()}" name="ServiceId"><input class="btn btn-outline-primary" type="submit" value="Chỉnh sửa"></form></td>
+                                <th>#</th>
+                                <th>Tên dịch vụ</th>
+                                <th>Giá tiền dịch vụ</th>
+                                <th>Loại dịch vụ</th>
+                                <th>Chiều dài lồng(optional)</th>
+                                <th>Chiều rộng lồng(optional)</th>
+                                <th>Chiều cao lồng(optional)</th>
+                                <th>Trạng thái</th>
+                                <th>Chỉnh sửa</th>
                             </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-                
+                        </thead>
+                        <tbody id="service-body">
+                            <c:forEach var="service" items="${list_service}">
+                                <tr>
+                                    <td>${service.getServiceId()}</td>
+                                    <td>${service.getServiceName()}</td>
+                                    <td>${service.getServicePrice()}đ</td>
+                                    <td>
+                                        <c:if test="${service.getServiceType() == 'shortime'}">Trong ngày</c:if>
+                                        <c:if test="${service.getServiceType() == 'longtime'}">Dài ngày</c:if>
+                                    </td>
+                                    <td>${service.getCageLength()}</td>
+                                    <td>${service.getCageWidth()}</td>
+                                    <td>${service.getCageHeight()}</td>
+                                    <c:if test="${service.getServiceStatus() == 'active'}"><td><form action="toggleservice" method="post"><input type="hidden" value="${service.getServiceId()}" name="toggleServiceId"><input type="hidden" value="${service.getServiceStatus()}" name="toggleServiceStatus"><input class="btn btn-outline-success" type="submit" value="Hoạt động"></form></td></c:if>
+                                    <c:if test="${service.getServiceStatus() == 'disabled'}"><td><form action="toggleservice" method="post"><input type="hidden" value="${service.getServiceId()}" name="toggleServiceId"><input type="hidden" value="${service.getServiceStatus()}" name="toggleServiceStatus"><input class="btn btn-outline-danger" type="submit" value="Tạm ngưng"></form></td></c:if>
+                                    <td><form action="editservice" method="get"><input type="hidden" value="${service.getServiceId()}" name="ServiceId"><input class="btn btn-outline-primary" type="submit" value="Chỉnh sửa"></form></td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+
                 </div>
                 <div id="createservicebutton">
-                     <a href="addservice" class="btn btn-info" >Tạo thêm dịch vụ</a>
+                    <a href="addservice" class="btn btn-info" >Tạo thêm dịch vụ</a>
                 </div>
             </div>
-                
+
             <div id="foot">
                 <%@include file="footer.jsp" %>
             </div>

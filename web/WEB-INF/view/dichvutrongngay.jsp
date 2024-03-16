@@ -156,7 +156,7 @@
 
             <div class="bocuc">
                 <div class="anhnut">
-                    <form action="spa.jsp">
+                    <form action="spa" method="post">
                         <button type="submit">
                             <img src="resource/image/chomeospa.png" alt="Chuyển tới trang Spa">
                             <p>Spa</p>
@@ -165,7 +165,7 @@
                 </div>
 
                 <div class="anhnut">
-                    <form action="cattialong.jsp">
+                    <form action="cattialong" method="post">
                         <button type="submit">
                             <img src="resource/image/cattialongchomeo.png" alt="Chuyển tới trang Grooming">
                             <p>Cắt tỉa</p>
@@ -174,7 +174,7 @@
                 </div>
 
                 <div class="anhnut">
-                    <form action="medicalconsultation">
+                    <form action="medicalconsultation" method="post">
                         <button type="submit">
                             <img src="resource/image/tuvanchomeo.png" alt="Chuyển tới trang Vet">
                             <p>Tư vấn</p>
@@ -183,7 +183,7 @@
                 </div>
 
                 <div class="anhnut">
-                    <form action="treatment">
+                    <form action="treatment" method="post">
                         <button type="submit">
                             <img src="resource/image/tiemphongchomeo.png" alt="Chuyển tới trang Training">
                             <p>Khám bệnh, tiêm phòng</p>

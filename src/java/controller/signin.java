@@ -71,7 +71,7 @@ public class signin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        String email = request.getParameter("email").toLowerCase();
+        String email = request.getParameter("email").toLowerCase().trim();
         String password = request.getParameter("password");
         Accounts checkAccount = new Accounts(email, password);
         AccountsDAO accountsDAO = new AccountsDAO();
@@ -81,7 +81,7 @@ public class signin extends HttpServlet {
             request.setAttribute("errorloginmsg", msg);
             request.getRequestDispatcher("/WEB-INF/view/signin.jsp").forward(request, response);
         }else if(thisAccount.getAccountStatus().equals("blocked")){
-            String msg = "Your account has been blocked";
+            String msg = "Blocked for reason: " + thisAccount.getBlockedReason();
             request.setAttribute("errorloginmsg", msg);
             request.getRequestDispatcher("/WEB-INF/view/signin.jsp").forward(request, response);
         }else{

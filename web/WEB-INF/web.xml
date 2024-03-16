@@ -1,13 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <filter>
-        <filter-name>NotLoggedIn</filter-name>
-        <filter-class>filter.NotLoggedIn</filter-class>
+        <filter-name>NotLoggedInCheck</filter-name>
+        <filter-class>filter.NotLoggedInCheck</filter-class>
     </filter>
     <filter>
-        <filter-name>LoggedIn</filter-name>
-        <filter-class>filter.LoggedIn</filter-class>
+        <filter-name>LoggedInCheck</filter-name>
+        <filter-class>filter.LoggedInCheck</filter-class>
     </filter>
+    <filter-mapping>
+        <filter-name>LoggedInCheck</filter-name>
+        <servlet-name>signin</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoggedInCheck</filter-name>
+        <servlet-name>signup</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>NotLoggedInCheck</filter-name>
+        <servlet-name>updatepet</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>NotLoggedInCheck</filter-name>
+        <servlet-name>myfeedback</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>NotLoggedInCheck</filter-name>
+        <servlet-name>sendFeedback</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>NotLoggedInCheck</filter-name>
+        <servlet-name>bookingdetail</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>NotLoggedInCheck</filter-name>
+        <servlet-name>cancelbooking</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>NotLoggedInCheck</filter-name>
+        <servlet-name>mybooking</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>NotLoggedInCheck</filter-name>
+        <servlet-name>book</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>NotLoggedInCheck</filter-name>
+        <servlet-name>petchoose</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>NotLoggedInCheck</filter-name>
+        <servlet-name>profile</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>NotLoggedInCheck</filter-name>
+        <servlet-name>deletepet</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>NotLoggedInCheck</filter-name>
+        <servlet-name>togglepet</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>NotLoggedInCheck</filter-name>
+        <servlet-name>logout</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>NotLoggedInCheck</filter-name>
+        <servlet-name>addpet</servlet-name>
+    </filter-mapping>
     <servlet>
         <servlet-name>signup</servlet-name>
         <servlet-class>controller.signup</servlet-class>

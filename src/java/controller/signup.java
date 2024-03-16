@@ -70,6 +70,7 @@ public class signup extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         Validator valid = new Validator();
         String email = request.getParameter("email");
+        email = email.toLowerCase().trim();
         if(valid.checkIfRegistered(email)){
             String msg = "This email has been registered";
             request.setAttribute("errorsignupmsg", msg);

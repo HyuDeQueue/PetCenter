@@ -51,7 +51,7 @@ public class cancelbooking extends HttpServlet {
             ArrayList<Pet> userPets = petDAO.getAllPet(ownerEmail);
             session.setAttribute("userPet", userPets);
             bookingDAO.toggleBooking(BookingId, "cancelled");
-            response.sendRedirect("mybooking");
+            response.sendRedirect("managebooking");
         }
     }
 
@@ -92,6 +92,6 @@ public class cancelbooking extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }// </editor-fold>  
 
 }

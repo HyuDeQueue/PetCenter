@@ -24,13 +24,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
+import javax.servlet.http.HttpSession;
 import model.Accounts;
 
 /**
  *
  * @author Windows 10
  */
-public class LoggedIn implements Filter {
+public class NotLoggedInCheck implements Filter {
     
     private static final boolean debug = false;
 
@@ -39,13 +40,13 @@ public class LoggedIn implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
     
-    public LoggedIn() {
+    public NotLoggedInCheck() {
     }    
     
     private void doBeforeProcessing(RequestWrapper request, ResponseWrapper response)
             throws IOException, ServletException {
         if (debug) {
-            log("LoggedIn:DoBeforeProcessing");
+            log("NotLoggedInCheck:DoBeforeProcessing");
         }
 
         // Write code here to process the request and/or response before
@@ -82,7 +83,7 @@ public class LoggedIn implements Filter {
     private void doAfterProcessing(RequestWrapper request, ResponseWrapper response)
             throws IOException, ServletException {
         if (debug) {
-            log("LoggedIn:DoAfterProcessing");
+            log("NotLoggedInCheck:DoAfterProcessing");
         }
 
         // Write code here to process the request and/or response after
@@ -134,18 +135,9 @@ public class LoggedIn implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-            HttpServletRequest httpRequest = (HttpServletRequest) request;
-            HttpServletResponse httpResponse = (HttpServletResponse) response;
-            Accounts loggedInAccount = (Accounts) httpRequest.getSession().getAttribute("loggedInAccount");
-            if (loggedInAccount != null) {
-                // User is not logged in, redirect them to the "Home" page
-                httpResponse.sendRedirect("Home");
-            } else {
-                // User is logged in, continue with the filter chain
-                chain.doFilter(request, response);
-            }
+        
         if (debug) {
-            log("LoggedIn:doFilter()");
+            log("NotLoggedInCheck:doFilter()");
         }
 
         // Create wrappers for the request and response objects.
@@ -164,6 +156,13 @@ public class LoggedIn implements Filter {
         Throwable problem = null;
         
         try {
+            HttpSession session = ((HttpServletRequest) request).getSession();
+            Accounts thisAccount = (Accounts) session.getAttribute("loggedInAccount");
+            if(thisAccount == null){
+                HttpServletResponse httpResponse = (HttpServletResponse) response;
+                httpResponse.sendRedirect("Home");                
+                return;
+            }
             chain.doFilter(wrappedRequest, wrappedResponse);
         } catch (Throwable t) {
             // If an exception is thrown somewhere down the filter chain,
@@ -217,7 +216,7 @@ public class LoggedIn implements Filter {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
             if (debug) {                
-                log("LoggedIn: Initializing filter");
+                log("NotLoggedInCheck: Initializing filter");
             }
         }
     }
@@ -228,9 +227,9 @@ public class LoggedIn implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("LoggedIn()");
+            return ("NotLoggedInCheck()");
         }
-        StringBuffer sb = new StringBuffer("LoggedIn(");
+        StringBuffer sb = new StringBuffer("NotLoggedInCheck(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());
@@ -305,7 +304,7 @@ public class LoggedIn implements Filter {
         
         public void setParameter(String name, String[] values) {
             if (debug) {
-                System.out.println("LoggedIn::setParameter(" + name + "=" + values + ")" + " localParams = " + localParams);
+                System.out.println("NotLoggedInCheck::setParameter(" + name + "=" + values + ")" + " localParams = " + localParams);
             }
             
             if (localParams == null) {
@@ -325,7 +324,7 @@ public class LoggedIn implements Filter {
         @Override
         public String getParameter(String name) {
             if (debug) {
-                System.out.println("LoggedIn::getParameter(" + name + ") localParams = " + localParams);
+                System.out.println("NotLoggedInCheck::getParameter(" + name + ") localParams = " + localParams);
             }
             if (localParams == null) {
                 return getRequest().getParameter(name);
@@ -344,7 +343,7 @@ public class LoggedIn implements Filter {
         @Override
         public String[] getParameterValues(String name) {
             if (debug) {
-                System.out.println("LoggedIn::getParameterValues(" + name + ") localParams = " + localParams);
+                System.out.println("NotLoggedInCheck::getParameterValues(" + name + ") localParams = " + localParams);
             }
             if (localParams == null) {
                 return getRequest().getParameterValues(name);
@@ -355,7 +354,7 @@ public class LoggedIn implements Filter {
         @Override
         public Enumeration getParameterNames() {
             if (debug) {
-                System.out.println("LoggedIn::getParameterNames() localParams = " + localParams);
+                System.out.println("NotLoggedInCheck::getParameterNames() localParams = " + localParams);
             }
             if (localParams == null) {
                 return getRequest().getParameterNames();
@@ -366,7 +365,7 @@ public class LoggedIn implements Filter {
         @Override
         public Map getParameterMap() {
             if (debug) {
-                System.out.println("LoggedIn::getParameterMap() localParams = " + localParams);
+                System.out.println("NotLoggedInCheck::getParameterMap() localParams = " + localParams);
             }
             if (localParams == null) {
                 return getRequest().getParameterMap();

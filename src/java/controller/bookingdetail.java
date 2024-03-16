@@ -6,12 +6,15 @@
 package controller;
 
 import DAO.BookingDAO;
+import DAO.BookingDetailDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.BookingDetail;
 
 /**
  *
@@ -33,8 +36,11 @@ public class bookingdetail extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            int BookingId = Integer.parseInt("bookingId");
-            BookingDAO bookingDAO = new BookingDAO();
+            int BookingId = Integer.parseInt(request.getParameter("bookingId"));
+            BookingDetailDAO bddao = new BookingDetailDAO();
+            ArrayList<BookingDetail> list_detail = bddao.getDetailOfBooking(BookingId);
+            request.setAttribute("list_detail", list_detail);
+            request.getRequestDispatcher("/WEB-INF/view/bookingdetail.jsp").forward(request, response);
         }
     }
 

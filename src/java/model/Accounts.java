@@ -20,6 +20,7 @@ public class Accounts implements Serializable{
     private String role;
     private String sex;
     private String accountStatus;
+    private String blockedReason;
 
     public Accounts(String email, String password, String firstName, String lastName, String phone, String role, String sex, String accountStatus) {
         this.email = email;
@@ -30,6 +31,18 @@ public class Accounts implements Serializable{
         this.role = role;
         this.sex = sex;
         this.accountStatus = accountStatus;
+    }
+
+    public Accounts(String email, String password, String firstName, String lastName, String phone, String role, String sex, String accountStatus, String blockedReason) {
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.role = role;
+        this.sex = sex;
+        this.accountStatus = accountStatus;
+        this.blockedReason = blockedReason;
     }
 
     
@@ -44,7 +57,7 @@ public class Accounts implements Serializable{
         this.role = role;
         this.accountStatus = accountStatus;
     }
-    
+
     
 
     public Accounts() {
@@ -129,6 +142,14 @@ public class Accounts implements Serializable{
         this.role = role;
     }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
     public String getAccountStatus() {
         return accountStatus;
     }
@@ -137,13 +158,15 @@ public class Accounts implements Serializable{
         this.accountStatus = accountStatus;
     }
 
-    public String getSex() {
-        return sex;
+    public String getBlockedReason() {
+        return blockedReason;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setBlockedReason(String blockedReason) {
+        this.blockedReason = blockedReason;
     }
+
+    
     
     
 }
