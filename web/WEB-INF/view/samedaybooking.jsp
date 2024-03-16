@@ -89,6 +89,7 @@
             <h1>Book dịch vụ cho thú cưng</h1>
             <form action="book" method="post">
                 <input type="hidden" name="userEmail" value="${loggedInAccount.getEmail()}">
+                <input type="hidden" name="bookType" value="short">
                 <div id="bookingForm" class="row">
                     <c:forEach var="pet" items="${pickedPets}" varStatus="loop">
                         <div class="bookingforapet col-3">
@@ -96,9 +97,9 @@
                             <p>Tên thú cưng: ${pet.petName}</p>
                             <p>
                                 <select class="custom-select" name="selectedService${loop.index}" required>
-                                    <option disabled>Chọn kiểu phòng</option>
+                                    <option disabled>Chọn dịch vụ</option>
                                     <c:forEach var="service" items="${allService}">
-                                        <c:if test="${service.serviceType eq 'longtime' && service.getServiceStatus() eq 'active'}">
+                                        <c:if test="${service.serviceType eq 'shortime' && service.getServiceStatus() eq 'active'}">
                                             <option data-price="${service.getServicePrice()}" value="${service.serviceId}">${service.getServiceName()} -> ${service.getServicePrice()} đồng/ngày</option>
                                         </c:if>
                                     </c:forEach>
@@ -109,7 +110,6 @@
                 </div>
                 <div id="choosingday">
                     <p>Ngày checkin <input type="date" name="petCheckinDate" id="petCheckinDate" min="<%=java.time.LocalDate.now()%>" max="<%=java.time.LocalDate.now().plusDays(30)%>" required></p>
-                    <p>Ngày checkout <input type="date" name="petCheckoutDate" id="petCheckoutDate" required></p>
                 </div>`
                 <div id="bookbutton">
                     <input type="submit" class="btn btn-success btn-lg" value="Đặt lịch ngay">

@@ -104,7 +104,7 @@ public class petchoose extends HttpServlet {
         
         request.setAttribute("pickedPets", selectedPet);
         String bookingType = request.getParameter("serviceType");
-        if(bookingType.equals("shorttime")) request.getRequestDispatcher("/WEB-INF/view/samedaybooking.jsp").forward(request, response);
+        if(bookingType.equals("shortime")) request.getRequestDispatcher("/WEB-INF/view/samedaybooking.jsp").forward(request, response);
         else if(bookingType.equals("longtime")) request.getRequestDispatcher("/WEB-INF/view/longdaybooking.jsp").forward(request, response);
         else response.sendRedirect("petchoose");
     }

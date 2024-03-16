@@ -106,8 +106,8 @@
                         <label class="custom-control-label" for="serviceType2">Dài ngày</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="ServiceType1" name="serviceType" class="custom-control-input" value="shorttime" required disabled>
-                        <label class="custom-control-label" for="ServiceType1">Trong ngày (Implementing)</label>
+                        <input type="radio" id="ServiceType1" name="serviceType" class="custom-control-input" value="shortime" required>
+                        <label class="custom-control-label" for="ServiceType1">Trong ngày</label>
                     </div>
                     
                     <br>

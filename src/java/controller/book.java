@@ -108,6 +108,7 @@ public class book extends HttpServlet {
         String[] petIds = new String[numOfPets];
         String checkinDate = request.getParameter("petCheckinDate"); // Shared check-in date
         String checkoutDate = request.getParameter("petCheckoutDate"); // Shared checkout date
+        if(request.getParameter("bookType") != null || !request.getParameter("bookType").trim().isEmpty()) checkoutDate=checkinDate;
 
         for (int i = 0; i < numOfPets; i++) {
             String paramName = "selectedService" + i;
@@ -136,6 +137,7 @@ public class book extends HttpServlet {
             LocalDate checkin = LocalDate.parse(checkinDate);
             LocalDate checkout = LocalDate.parse(checkoutDate);
             long daysBetween = ChronoUnit.DAYS.between(checkin, checkout);
+            if(request.getParameter("bookType") != null || !request.getParameter("bookType").trim().isEmpty()) daysBetween = 1;
             int totalPrice = Integer.parseInt(CurrentPrice) * (int) daysBetween;
 
             BookingDetail detail = new BookingDetail();
