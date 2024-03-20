@@ -61,9 +61,9 @@
     <body>
         <div id="website-width">
             <%
-                FeedbackDAO feedbackDAO = new FeedbackDAO();
-                ArrayList<Feedback> allFeedback = feedbackDAO.getAllFeedback();
-                session.setAttribute("userFeedback", allFeedback);
+//                FeedbackDAO feedbackDAO = new FeedbackDAO();
+//                ArrayList<Feedback> allFeedback = feedbackDAO.getAllFeedback();
+//                session.setAttribute("userFeedback", allFeedback);
             %>
 
             <%@include file="about.jsp" %>

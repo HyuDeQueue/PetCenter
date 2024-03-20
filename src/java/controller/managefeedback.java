@@ -5,12 +5,16 @@
  */
 package controller;
 
+import DAO.FeedbackDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Feedback;
 
 /**
  *
@@ -32,6 +36,10 @@ public class managefeedback extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
+            FeedbackDAO feedbackDAO = new FeedbackDAO();
+            ArrayList<Feedback> allFeedback = feedbackDAO.getAllFeedback();
+            request.setAttribute("userFeedback", allFeedback);
             request.getRequestDispatcher("/WEB-INF/view/managefeedback.jsp").forward(request, response);
         }
     }

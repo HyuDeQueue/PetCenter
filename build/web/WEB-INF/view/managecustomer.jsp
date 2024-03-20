@@ -127,9 +127,10 @@
                         </tr>
                     </thead>
 
-                    <% AccountsDAO accountsDAO = new AccountsDAO();
-                        ArrayList<Accounts> allAccounts = accountsDAO.getAllAccounts();
-                        session.setAttribute("list_accounts", allAccounts);
+                    <% 
+//                        AccountsDAO accountsDAO = new AccountsDAO();
+//                        ArrayList<Accounts> allAccounts = accountsDAO.getAllAccounts();
+//                        session.setAttribute("list_accounts", allAccounts);
                     %>
                     <tbody id="userTableBody">
                         <c:if test="${list_accounts != null}">
@@ -199,7 +200,7 @@
                         if (rowData.includes(keyword)) {
                             userTableBody[i].style.display = ""; // Hiển thị hàng nếu chứa từ khóa tìm kiếm
                         } else {
-                            userTableBody[i].style.display = "none"; // Ẩn hàng nếu không chứa từ khóa tìm kiếm
+                            userTableBody[i].style.display = "none"; 
                         }
                     }
                 }
@@ -207,8 +208,8 @@
                 // Bắt sự kiện khi người dùng chọn thanh tìm kiếm tên
                 nameInput.addEventListener("focus", function () {
                     activeSearchInput = nameInput;
-                    toggleSearchInput(nameInput, emailInput); // Chọn thanh tìm kiếm tên, ẩn thanh tìm kiếm email
-                    filterAndSort(); // Lọc và sắp xếp dữ liệu dựa trên thanh tìm kiếm tên
+                    toggleSearchInput(nameInput, emailInput);
+                    filterAndSort(); 
                 });
 
                 // Bắt sự kiện khi người dùng chọn thanh tìm kiếm email

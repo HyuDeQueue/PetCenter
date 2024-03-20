@@ -75,9 +75,9 @@
             <div id="manage-board">
                 <div>
                     <%
-                        ServiceDAO serviceDAO = new ServiceDAO();
-                        ArrayList<Service> service_list = serviceDAO.GetAllServices();
-                        session.setAttribute("list_service", service_list);
+//                        ServiceDAO serviceDAO = new ServiceDAO();
+//                        ArrayList<Service> service_list = serviceDAO.GetAllServices();
+//                        session.setAttribute("list_service", service_list);
                     %>
                     <table class="table table-bordered table-hover table-sm">
                         <thead>

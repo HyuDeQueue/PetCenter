@@ -90,7 +90,7 @@
                                                 </form>
                                             </td>
                                             <td><form action="proceedbooking" method="post"><input type="hidden" name="status" value="confirmed"><input type="hidden" name="bookingId" value="${Booking.getBookingId()}"><input type="submit" class="btn btn-success" value="Xác nhận đơn"></form></td>
-                                            <td><form><input type="submit" class="btn btn-warning" value="Chỉnh sửa đơn"></form></td>
+                                            <td><form action="editbooking" method="get"><input type="hidden" name="bookingId" value="${Booking.getBookingId()}"><input type="submit" class="btn btn-warning" value="Chỉnh sửa đơn"></form></td>
                                             <td><form action="cancelbooking" method="post"><input type="hidden" name="userEmail" value="${loggedInAccount.email}"><c:if test="${Booking.getBookingId() != null}"><input type="hidden" name="bookingId" value="${Booking.getBookingId()}"></c:if><input type="submit" class="btn btn-danger" value="Hủy đơn"></form></td>
                                             </tr>
                                     </c:if>
@@ -111,6 +111,7 @@
                                 <td>Trạng thái</td>
                                 <td>Chi tiết</td>
                                 <td>Check in</td>
+                                <td>Chỉnh sửa đơn</td>
                                 <td>Hủy đơn</td>
                             </tr>
                         </thead>
@@ -129,6 +130,7 @@
                                                 </form>
                                             </td>
                                             <td><form action="proceedbooking" method="post"><input type="hidden" name="status" value="checkedin"><input type="hidden" name="bookingId" value="${Booking.getBookingId()}"><input type="submit" class="btn btn-success" value="Đã checkin"></form></td>
+                                            <td><form action="editbooking" method="get"><input type="hidden" name="bookingId" value="${Booking.getBookingId()}"><input type="submit" class="btn btn-warning" value="Chỉnh sửa đơn"></form></td>
                                             <td><form action="cancelbooking" method="post"><input type="hidden" name="userEmail" value="${loggedInAccount.email}"><c:if test="${Booking.getBookingId() != null}"><input type="hidden" name="bookingId" value="${Booking.getBookingId()}"></c:if><input type="submit" class="btn btn-danger" value="Hủy đơn"></form></td>
                                             </tr>
                                     </c:if>

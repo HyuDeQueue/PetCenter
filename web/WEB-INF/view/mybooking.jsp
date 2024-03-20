@@ -55,10 +55,10 @@
     <body>
         <div id="website-width">
             <%
-                BookingDAO bookingDAO = new BookingDAO();
-                Accounts userAccounts = (Accounts) session.getAttribute("loggedInAccount");
-                ArrayList<Booking> userBooking = bookingDAO.getUserBooking(userAccounts.getEmail());
-                session.setAttribute("userBooking", userBooking);
+//                BookingDAO bookingDAO = new BookingDAO();
+//                Accounts userAccounts = (Accounts) session.getAttribute("loggedInAccount");
+//                ArrayList<Booking> userBooking = bookingDAO.getUserBooking(userAccounts.getEmail());
+//                session.setAttribute("userBooking", userBooking);
             %>
             <%@include file="about.jsp" %>
             <h1>Đơn đặt hàng của bạn</h1>

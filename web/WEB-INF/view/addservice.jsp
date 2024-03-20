@@ -68,7 +68,7 @@
             <p>Tên dịch vụ: <input type="text" name="servicename" required="true"></p>
             <p>Loại dịch vụ:
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="serviceType" id="inlineRadio1" onchange="toggleInputs()" value="shorttime" required>
+                    <input class="form-check-input" type="radio" name="serviceType" id="inlineRadio1" onchange="toggleInputs()" value="shortime" required>
                     <label class="form-check-label" for="inlineRadio1">Trong ngày</label>
                 </div>
                 <div class="form-check form-check-inline">

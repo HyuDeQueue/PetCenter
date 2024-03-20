@@ -92,5 +92,22 @@ public class BookingDetailDAO extends DBContext{
             return null;
         }
     }
+
+    public void updateDetail(int detailId, int serviceId, int price) {
+        try {
+            String sql="UPDATE [dbo].[Booking_detail]\n"
+                    + "SET [ServiceId] = ?\n"
+                    + "   ,[Current_Price] = ?\n"
+                    + "WHERE [DetailId] = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, serviceId);
+            ps.setInt(2, price);
+            ps.setInt(3, detailId);
+            ps.execute();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(BookingDetailDAO.class.getName()).log(Level.SEVERE, null, ex); 
+        }
+    }
     
 }

@@ -38,7 +38,10 @@ public class manageservice extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
 //            ServiceDAO serviceDAO = new ServiceDAO();
 //            ArrayList<Service> service_list = serviceDAO.getAllServices();
-//            HttpSession session = request.getSession();
+            HttpSession session = request.getSession();
+            ServiceDAO serviceDAO = new ServiceDAO();
+                        ArrayList<Service> service_list = serviceDAO.GetAllServices();
+                        session.setAttribute("list_service", service_list);
 //            session.setAttribute("service_list", service_list);
             request.getRequestDispatcher("/WEB-INF/view/manageservice.jsp").forward(request, response);
 

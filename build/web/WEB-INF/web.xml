@@ -216,6 +216,10 @@
         <servlet-name>updatepet</servlet-name>
         <servlet-class>controller.updatepet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>editbooking</servlet-name>
+        <servlet-class>controller.editbooking</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
@@ -363,6 +367,10 @@
     <servlet-mapping>
         <servlet-name>updatepet</servlet-name>
         <url-pattern>/updatepet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editbooking</servlet-name>
+        <url-pattern>/editbooking</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

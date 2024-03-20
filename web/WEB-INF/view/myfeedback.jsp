@@ -62,10 +62,10 @@
     <body>
         <div id="website-width">
             <%
-                Accounts userAccounts = (Accounts) session.getAttribute("loggedInAccount");
-                FeedbackDAO feedbackDAO = new FeedbackDAO();
-                ArrayList<Feedback> userFeedback = feedbackDAO.getUserFeedback(userAccounts.getEmail());
-                session.setAttribute("userFeedback", userFeedback);
+//                Accounts userAccounts = (Accounts) session.getAttribute("loggedInAccount");
+//                FeedbackDAO feedbackDAO = new FeedbackDAO();
+//                ArrayList<Feedback> userFeedback = feedbackDAO.getUserFeedback(userAccounts.getEmail());
+//                session.setAttribute("userFeedback", userFeedback);
             %>
 
             <%@include file="about.jsp" %>

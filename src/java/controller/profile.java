@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Accounts;
 
 /**
  *
@@ -58,12 +60,8 @@ public class profile extends HttpServlet {
             throws ServletException, IOException {
 //        processRequest(request, response);
 //        HttpSession session = request.getSession();
-        
-//        Accounts owner = (Accounts) session.getAttribute("loggedInAccount");
-//        String ownerEmail = owner.getEmail();
-//        PetDAO petDAO = new PetDAO();
-//        ArrayList<Pet> list_pet = petDAO.getAllPet(ownerEmail);
-//        session.setAttribute("list_pet", list_pet);
+        HttpSession session = request.getSession();
+        Accounts accounts = (Accounts) session.getAttribute("loggedInAccount");
         request.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(request, response);
     }
 

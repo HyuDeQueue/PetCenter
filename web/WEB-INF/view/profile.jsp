@@ -112,7 +112,7 @@
             <div class="row" id="profile-page">
                 <div class="col-12 col-md-3" id="profile-pic-side">
                     <%
-                        Accounts accounts = (Accounts) session.getAttribute("loggedInAccount");
+//                        Accounts accounts = (Accounts) session.getAttribute("loggedInAccount");
                     %>
                     
                     <c:choose>
